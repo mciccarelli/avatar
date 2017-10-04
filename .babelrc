@@ -8,6 +8,7 @@
         "extractCss": "./static/css/bundle.css",
         "preprocessCss": "./pre-processor.js"
       }
-    ]
+    ],
+    ["inline-react-svg"]
   ]
 }

@@ -1,3 +1,30 @@
+$primary: #86888A
+$secondary: #DCDDDE
+$accent: #006CB7
+
+$fonts-dir: '../fonts/'
+
+@font-face
+  font-family: 'Conduit'
+  src: url($fonts-dir + 'ConduitExBdITCTT.eot')
+  src: url($fonts-dir + 'ConduitExBdITCTT.eot?#iefix') format("embedded-opentype"), url($fonts-dir + 'ConduitExBdITCTT.woff2') format("woff2"), url($fonts-dir + 'ConduitExBdITCTT.woff') format("woff"), url($fonts-dir + 'ConduitExBdITCTT.ttf') format("truetype"), url($fonts-dir + 'ConduitExBdITCTT.svg#ConduitExBdITCTT') format("svg")
+  font-weight: 700
+  font-style: normal
+
+@font-face
+  font-family: 'Conduit'
+  src: url($fonts-dir + 'ConduitMdITCTTMedium.eot')
+  src: url($fonts-dir + 'ConduitMdITCTTMedium.eot?#iefix') format("embedded-opentype"), url($fonts-dir + 'ConduitMdITCTTMedium.woff2') format("woff2"), url($fonts-dir + 'ConduitMdITCTTMedium.woff') format("woff"), url($fonts-dir + 'ConduitMdITCTTMedium.ttf') format("truetype"), url($fonts-dir + 'ConduitMdITCTTMedium.svg#ConduitMdITCTTMedium') format("svg")
+  font-weight: 400
+  font-style: normal
+
+@font-face
+  font-family: 'Conduit'
+  src: url($fonts-dir + 'ConduitExLtITCTT.eot')
+  src: url($fonts-dir + 'ConduitExLtITCTT.eot?#iefix') format("embedded-opentype"), url($fonts-dir + 'ConduitExLtITCTT.woff2') format("woff2"), url($fonts-dir + 'ConduitExLtITCTT.woff') format("woff"), url($fonts-dir + 'ConduitExLtITCTT.ttf') format("truetype"), url($fonts-dir + 'ConduitExLtITCTT.svg#ConduitExLtITCTT') format("svg")
+  font-weight: 200
+  font-style: normal
+
 @mixin opacity($opacity)
   opacity: $opacity
   filter: alpha(opacity=($opacity * 100))
