@@ -10,13 +10,11 @@ module.exports = {
         options: {
           name: 'dist/[path][name].[ext]'
         }
-      }
-    ,
+      },
       {
         test: /\.css$/,
         use: ['babel-loader', 'raw-loader', 'postcss-loader']
-      }
-    ,
+      },
       {
         test: /\.s(a|c)ss$/,
         use: ['babel-loader', 'raw-loader', 'postcss-loader',
@@ -29,7 +27,15 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff&outputPath=static/',
+      },
+      {
+        test: /\.(svg|ttf|eot)$/i,
+        loader: 'file-loader?outputPath=static/',
+      },
     )
     return config
   }

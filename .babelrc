@@ -5,7 +5,7 @@
       "module-resolver", {
         "root": ["."],
         "alias": {
-          "fonts": "./fonts",
+          "fonts": "./static/fonts",
           "styles": "./styles"
         },
         "cwd": "babelrc"
