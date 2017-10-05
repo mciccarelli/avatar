@@ -35,7 +35,7 @@ module.exports = {
       {
         test: /\.(svg|ttf|eot)$/i,
         loader: 'file-loader?outputPath=static/',
-      },
+      }
     )
     return config
   }
