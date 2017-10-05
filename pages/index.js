@@ -1,56 +1,32 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { mq } from '../styles'
 import LogoSM from '../svgs/avatar-logo.svg'
 import LogoLG from '../svgs/avatar-logo-plus.svg'
 
-const mq = {
-  medium: (...args) => css`
-    @media (min-width: 500px) {
-      ${ css(...args) }
-    }
-  `
-}
-
 const Wrap = styled.div`
   overflow: hidden;
+  text-align: center;
   section {
-    width: 100%;
-    padding: 0 7%;
-    display: table;
-    margin: 0;
-    max-width: none;
-    height: 100vh;
-    position: relative;
-    &.intro {
-      height: 80vh;
+    min-height: 60vh;
+    padding: 30px;
+    flex-display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &:nth-child(1) {
+      transform: translateY(-6vh);
       ${ mq.medium`
-        transform: translateY(-20%);
+        min-height: 80vh;
+        transform: translateY(-8.5vh)
       ` }
-    }
-    .logo {
-      transform: translateX(18vw);
-      width: 80vw;
-      height: auto;
-      margin-bottom: 10px;
-      ${ mq.medium`
-        margin-bottom: 30px;
+      ${ mq.large`
+        transform: translateY(-16vh)
       ` }
     }
   }
-
   .content {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    h1 {
-      font-size: 1.5rem;
-      font-weight: 200;
-      text-indent: 1.25rem;
-      color: var(--accentColor);
-      ${ mq.medium`
-        font-size: 2rem;
-      ` }
-    }
+    margin: 0 auto;
+    max-width: var(--maxWidth);
     h2 {
       font-size: 1.5rem;
       font-weight: 200;
@@ -61,16 +37,23 @@ const Wrap = styled.div`
       ` }
     }
     p {
-      font-size: 1rem;
+      font-size: 1.125rem;
       font-weight: 200;
-      text-align: center;
       margin-top: 0;
-      margin-bottom: 1.875rem;
+      margin-bottom: 3.125rem;
       ${ mq.medium`
         font-size: 1.5rem;
       ` }
+      &.about {
+        font-size: 1.125rem;
+        font-weight: 200;
+        color: var(--accentColor);
+        ${ mq.medium`
+          font-size: 1.5rem;
+        ` }
+      }
       &.areas {
-        opacity: 0.75;
+        opacity: 0.8;
       }
       &.contact {
         color: var(--accentColor);
@@ -85,24 +68,10 @@ const Wrap = styled.div`
       }
     }
   }
-
-  .contain {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: var(--maxWidth);
-  }
-    
   footer {
-    padding: 1% 5% 10%;
-    text-align: center;
-    svg {
-      max-width: 150px;
-      height: auto;
-      ${ mq.medium`
-        max-width: auto;
-      ` }
-    }
+    padding: 1% 5% 5%;
     span {
+      color: var(--mediumGray);
       padding-right: 5px;
       display: block;
       ${ mq.medium`
@@ -111,43 +80,58 @@ const Wrap = styled.div`
       ` }
     }
   }
+  .logo-lg {
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
+    margin-bottom: 10px;
+    ${ mq.medium`
+      margin-bottom: 20px;
+    ` }
+  }
+  .logo-sm {
+    max-width: 100px;
+    height: auto;
+    ${ mq.medium`
+      max-width: 130px;
+      margin-bottom: 20px;
+    ` }
+  }
 `
 
 export default () => ( 
   <Wrap>
     <section className="intro">  
+      <LogoLG className="logo-lg" />
       <div className="content">
-        <LogoLG className="logo" />
-        <h1 className="contain">
+        <p className="about">
           We are focused on making equity investments in
           both emerging and established companies which offer
           proprietary, branded and scalable solutions to the
           mental health and wellness crisis affecting our world.
-        </h1>
+        </p>
       </div>
     </section>
     <section>  
       <div className="content">
-        <div className="contain">
-          <h2>Key Areas of Interest:</h2>
-          <p className="areas"> 
-            Addiction, Anxiety and Depression , Fitness and Nutrition, Meditation and Mindfulness, Shame and Trauma, Spirituality
-          </p>
-          <h2>Contact:</h2>
-          <p className="contact">
-            Kenneth Vancini, CEO <br />
-            o. 508 642 5800 m. 508 630 6879 <br />
-            <a href="mailto:kvancini@avatarcompanies.com">kvancini@avatarcompanies.com</a>
-          </p>
-        </div>
+        <h2>Key Areas of Interest:</h2>
+        <p className="areas"> 
+          Addiction, Anxiety and Depression , Fitness and Nutrition, Meditation and Mindfulness, Shame and Trauma, Spirituality
+        </p>
+        <h2>Contact:</h2>
+        <p className="contact">
+          Kenneth Vancini, CEO <br />
+          o. 508 642 5800 m. 508 630 6879 <br />
+          <a href="mailto:kvancini@avatarcompanies.com">kvancini@avatarcompanies.com</a>
+        </p>
       </div>
     </section>
     <footer>
-      <LogoSM />
-      <p className="contain">
+      <LogoSM className="logo-sm" />
+      <p className="content">
         <span>Avatar Companies, LLC</span>
-        <span>12 East 49th Street, 38th fl.</span>
-        <span>New York, New York 10017</span>
+        <span>12 East 49th St, 38th fl.</span>
+        <span>New York, NY 10017</span>
       </p>
     </footer>
   </Wrap>

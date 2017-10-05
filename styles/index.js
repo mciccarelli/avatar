@@ -1,5 +1,19 @@
 import styledNormalize from 'styled-normalize'
-import { injectGlobal } from 'styled-components'
+import { injectGlobal, css } from 'styled-components'
+
+// media query helper
+export const mq = {
+  medium: (...args) => css`
+    @media (min-width: 500px) {
+      ${ css(...args) }
+    }
+  `,
+  large: (...args) => css`
+    @media (min-width: 1000px) {
+      ${ css(...args) }
+    }
+  `
+}
  
 export default () => injectGlobal`
   ${styledNormalize}
@@ -41,7 +55,7 @@ export default () => injectGlobal`
     --mediumGray: #86888A;
     --lightGray: #DCDDDE;
     --baseFontFamily: 'Conduit', 'Trebuchet MS', Helvetica, sans-serif;
-    --maxWidth: 640px;
+    --maxWidth: 680px;
   }
 
   html {
@@ -58,6 +72,6 @@ export default () => injectGlobal`
     text-rendering: optimizeLegibility;
     font-smoothing: antialiased;
     font: 1rem/1.5 var(--baseFontFamily);
-    color: var(--mediumGray);
+    color: black;
   }
 `
