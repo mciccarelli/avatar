@@ -1,9 +1,4 @@
 import React from 'react'
-
-// import stylesheet from 'styles/index.scss'
-// or, if you work with plain css
-// import stylesheet from 'styles/index.css'
-
 import LogoSM from '../svgs/avatar-logo.svg'
 import LogoLG from '../svgs/avatar-logo-plus.svg'
 
