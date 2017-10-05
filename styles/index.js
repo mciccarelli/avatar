@@ -7,11 +7,6 @@ export const mq = {
     @media (min-width: 500px) {
       ${ css(...args) }
     }
-  `,
-  large: (...args) => css`
-    @media (min-width: 1000px) {
-      ${ css(...args) }
-    }
   `
 }
  
