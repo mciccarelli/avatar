@@ -1,0 +1,159 @@
+@import 'normalize.css';
+
+// vars
+$primary: #86888A;
+$secondary: #DCDDDE;
+$accent: #006CB7;
+$fonts-dir: '../static/fonts/';
+
+$max-width: 640px;
+$mobile-bp: 500px;
+
+// fonts
+@font-face {
+  font-family: 'Conduit';
+  src: url($fonts-dir + 'ConduitExBdITCTT.eot');
+  src: url($fonts-dir + 'ConduitExBdITCTT.eot?#iefix') format("embedded-opentype"), url($fonts-dir + 'ConduitExBdITCTT.woff2') format("woff2"), url($fonts-dir + 'ConduitExBdITCTT.woff') format("woff"), url($fonts-dir + 'ConduitExBdITCTT.ttf') format("truetype"), url($fonts-dir + 'ConduitExBdITCTT.svg#ConduitExBdITCTT') format("svg");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Conduit';
+  src: url($fonts-dir + 'ConduitMdITCTTMedium.eot');
+  src: url($fonts-dir + 'ConduitMdITCTTMedium.eot?#iefix') format("embedded-opentype"), url($fonts-dir + 'ConduitMdITCTTMedium.woff2') format("woff2"), url($fonts-dir + 'ConduitMdITCTTMedium.woff') format("woff"), url($fonts-dir + 'ConduitMdITCTTMedium.ttf') format("truetype"), url($fonts-dir + 'ConduitMdITCTTMedium.svg#ConduitMdITCTTMedium') format("svg");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Conduit';
+  src: url($fonts-dir + 'ConduitExLtITCTT.eot');
+  src: url($fonts-dir + 'ConduitExLtITCTT.eot?#iefix') format("embedded-opentype"), url($fonts-dir + 'ConduitExLtITCTT.woff2') format("woff2"), url($fonts-dir + 'ConduitExLtITCTT.woff') format("woff"), url($fonts-dir + 'ConduitExLtITCTT.ttf') format("truetype"), url($fonts-dir + 'ConduitExLtITCTT.svg#ConduitExLtITCTT') format("svg");
+  font-weight: 200;
+  font-style: normal;
+}
+
+// mixins
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: alpha(opacity=($opacity * 100));
+}
+
+// general styling
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.wrap {
+  font-family: 'Conduit', 'Trebuchet MS', Helvetica, sans-serif;
+  color: $primary;
+  overflow: hidden;
+  section {
+    width: 100%;
+    padding: 0 7%;
+    display: table;
+    margin: 0;
+    max-width: none;
+    height: 100vh;
+    position: relative;
+    &.intro {
+      height: 80vh;
+      @media (min-width: $mobile-bp) {
+        transform: translateY(-20%);
+      }
+    }
+    .logo {
+      transform: translateX(18vw);
+      width: 80vw;
+      height: auto;
+      margin-bottom: 10px;
+      @media (min-width: $mobile-bp) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    h1 {
+      @extend .contain;
+      font-size: 1.5rem;
+      font-weight: 200;
+      text-indent: 1.25rem;
+      color: $accent;
+      @media (min-width: $mobile-bp) {
+        font-size: 2rem;
+      }
+    }
+    h2 {
+      @extend .contain;
+      font-size: 1.5rem;
+      font-weight: 200;
+      display: block;
+      color: $primary;
+      margin-bottom: 0.3125rem;
+      @media (min-width: $mobile-bp) {
+        font-size: 2rem;
+      }
+    }
+    p {
+      @extend .contain;
+      font-size: 1rem;
+      font-weight: 200;
+      color: $primary;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 1.875rem;
+      @media (min-width: $mobile-bp) {
+        font-size: 1.5rem;
+      }
+      &.areas {
+        @include opacity(0.5)
+      }
+      &.contact {
+        color: $accent;
+        margin-bottom: 0;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: $accent;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .contain {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $max-width;
+  }
+    
+  footer {
+    padding: 1% 5% 10%;
+    text-align: center;
+    svg {
+      max-width: 150px;
+      height: auto;
+      @media (min-width: $mobile-bp) {
+        max-width: none;
+      }
+    }
+    span {
+      padding-right: 5px;
+      display: block;
+      @media (min-width: $mobile-bp) {
+        padding-right: 20px;
+        display: inline-block;
+      }
+    }
+  }
+}

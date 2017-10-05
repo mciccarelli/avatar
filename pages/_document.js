@@ -1,5 +1,6 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
+import stylesheet from 'styles/index.scss'
 
 export default class MyDocument extends Document {
   static getInitialProps ({ renderPage }) {
@@ -13,8 +14,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta charset='UTF-8' />
           <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css' />
-          <link rel='stylesheet' href='/static/css/bundle.css' />
+          <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         </Head>
         <body>
           {this.props.customValue}

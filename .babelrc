@@ -1,14 +1,24 @@
 {
-  "presets": ["next/babel"],
   "plugins": [
+    ["inline-react-svg"],
     [
-      "css-modules-transform", {
-        "extensions": [".css", ".sass"],
-        "append": [ "postcss-cssnext" ],
-        "extractCss": "./static/css/bundle.css",
-        "preprocessCss": "./pre-processor.js"
+      "module-resolver", {
+        "root": ["."],
+        "alias": {
+          "fonts": "./fonts",
+          "styles": "./styles"
+        },
+        "cwd": "babelrc"
+    }],
+    [
+      "wrap-in-js",
+      {
+        "extensions": ["css$", "scss$"]
       }
-    ],
-    ["inline-react-svg"]
-  ]
+    ]
+  ],
+  "presets": [
+    "next/babel"
+  ],
+  "ignore": []
 }
