@@ -104,10 +104,7 @@ export default () => (
       <LogoLG className="logo-lg" />
       <div className="content">
         <p className="about">
-          We are focused on making equity investments in
-          both emerging and established companies which offer
-          proprietary, branded and scalable solutions to the
-          mental health and wellness crisis affecting our world.
+          Avatar Companies is a private partnership focused on making equity investments in the emerging fields of mental health and wellness.
         </p>
       </div>
     </section>
