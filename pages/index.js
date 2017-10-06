@@ -9,17 +9,17 @@ const Wrap = styled.div`
   text-align: center;
   section {
     min-height: 70vh;
-    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     &:nth-child(1) {
       min-height: 100vh;
-      position: relative;
+      justify-content: flex-start;
     }          
   }
   .content {
     margin: 0 auto;
+    padding: 30px;
     max-width: var(--maxWidth);
     h2 {
       font-size: 1.5rem;
@@ -82,10 +82,11 @@ const Wrap = styled.div`
     width: 100%;
     max-width: 1200px;
     height: auto;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -20%);
+    margin: 0 auto;
+    transform: translateY(-30%);
+    ${ mq.medium`
+      transform: translateY(-20%);
+    ` }
   }
   .logo-sm {
     margin: 0 auto 20px;
