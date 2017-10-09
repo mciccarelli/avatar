@@ -4,7 +4,12 @@ import { injectGlobal, css } from 'styled-components'
 // media query helper
 export const mq = {
   medium: (...args) => css`
-    @media (min-width: 500px) {
+    @media (min-width: 600px) {
+      ${ css(...args) }
+    }
+  `,
+  large: (...args) => css`
+    @media (min-width: 1200px) {
       ${ css(...args) }
     }
   `
@@ -50,7 +55,7 @@ export default () => injectGlobal`
     --mediumGray: #86888A;
     --lightGray: #DCDDDE;
     --baseFontFamily: 'Conduit', 'Trebuchet MS', Helvetica, sans-serif;
-    --maxWidth: 680px;
+    --maxWidth: 678px;
   }
 
   html {

@@ -19,10 +19,17 @@ const Wrap = styled.div`
   }
   .content {
     margin: 0 auto;
-    padding: 30px;
-    max-width: var(--maxWidth);
+    width: 100%;
+    padding: 0 20%;
+    ${ mq.medium`
+      padding: 0 22%;
+    ` }    
+    ${ mq.large`
+      padding: 0;
+      max-width: var(--maxWidth);
+    ` }
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       font-weight: 200;
       display: block;
       margin-bottom: 0;
@@ -32,19 +39,16 @@ const Wrap = styled.div`
     }
     p {
       font-size: 1.125rem;
+      line-height: 1.35;
       font-weight: 200;
       margin-top: 0;
       margin-bottom: 3.125rem;
       ${ mq.medium`
         font-size: 1.5rem;
+        line-height: 1.5;
       ` }
       &.about {
-        font-size: 1.125rem;
-        font-weight: 200;
         color: var(--accentColor);
-        ${ mq.medium`
-          font-size: 1.5rem;
-        ` }
       }
       &.areas {
         opacity: 0.8;
@@ -82,11 +86,7 @@ const Wrap = styled.div`
     width: 100%;
     max-width: 1200px;
     height: auto;
-    margin: 0 auto;
-    transform: translateY(-30%);
-    ${ mq.medium`
-      transform: translateY(-20%);
-    ` }
+    margin: 0 auto 3.125rem;
   }
   .logo-sm {
     margin: 0 auto 20px;
@@ -112,7 +112,7 @@ export default () => (
       <div className="content">
         <h2>Key Areas of Interest:</h2>
         <p className="areas"> 
-          Addiction, Anxiety and Depression , Fitness and Nutrition, Meditation and Mindfulness, Shame and Trauma, Spirituality
+          Addiction, Anxiety and Depression, Fitness and Nutrition, Meditation and Mindfulness, Shame and Trauma, Spirituality
         </p>
         <h2>Contact:</h2>
         <p className="contact">
