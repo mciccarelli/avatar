@@ -117,7 +117,8 @@ export default () => (
         <h2>Contact:</h2>
         <p className="contact">
           Kenneth Vancini, CEO <br />
-          o. 508 642 5800 m. 508 630 6879 <br />
+          o. <a href="tel:1-508-642-5800">1-508-642-5800</a><br /> 
+          m. <a href="tel:1-508-630-6879">1-508-630-6879</a><br />
           <a href="mailto:kvancini@avatarcompanies.com">kvancini@avatarcompanies.com</a>
         </p>
       </div>
