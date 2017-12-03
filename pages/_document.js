@@ -3,11 +3,15 @@ import { ServerStyleSheet } from 'styled-components'
 import baseStyles from '../styles/index'
 
 export default class MyDocument extends Document {
+  componentDidMount () {
+    window.scrollTo(0, 0)
+  }
+
   render () {
     baseStyles()
     const sheet = new ServerStyleSheet()
     const main = sheet.collectStyles(<Main />)
-    const styleTags = sheet.getStyleElement()
+    const styleTags = sheet.getStyleElement()    
 
     return (
       <html>
