@@ -1,20 +1,20 @@
-import styledNormalize from 'styled-normalize'
-import { injectGlobal, css } from 'styled-components'
+import styledNormalize from 'styled-normalize';
+import { injectGlobal, css } from 'styled-components';
 
 // media query helper
 export const mq = {
   medium: (...args) => css`
     @media (min-width: 600px) {
-      ${ css(...args) }
+      ${css(...args)};
     }
   `,
   large: (...args) => css`
     @media (min-width: 1200px) {
-      ${ css(...args) }
+      ${css(...args)};
     }
   `
-}
- 
+};
+
 export default () => injectGlobal`
   ${styledNormalize}
   @font-face {
@@ -55,7 +55,8 @@ export default () => injectGlobal`
     --mediumGray: #86888A;
     --lightGray: #DCDDDE;
     --baseFontFamily: 'Conduit', 'Trebuchet MS', Helvetica, sans-serif;
-    --maxWidth: 678px;
+    --maxWidth: 1028px;
+    --headerHeight: 80px;
   }
 
   html {
@@ -74,4 +75,4 @@ export default () => injectGlobal`
     font: 1rem/1.5 var(--baseFontFamily);
     color: black;
   }
-`
+`;
