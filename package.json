@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production next start"
   },
   "dependencies": {
     "babel-plugin-inline-dotenv": "^1.1.2",
