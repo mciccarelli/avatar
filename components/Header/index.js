@@ -8,19 +8,19 @@ export default () => (
     </Logo>
     <NavLinks>
       <li>
-        <a href="void(0)">Mission</a>
+        <a href="javascript:void(0)">Mission</a>
       </li>
       <li>
-        <a href="void(0)">Team</a>
+        <a href="javascript:void(0)">Team</a>
       </li>
       <li>
-        <a href="void(0)">Portfolio</a>
+        <a href="javascript:void(0)">Portfolio</a>
       </li>
       <li>
-        <a href="void(0)">News</a>
+        <a href="javascript:void(0)">News</a>
       </li>
       <li>
-        <a href="void(0)">Contact</a>
+        <a href="javascript:void(0)">Contact</a>
       </li>
     </NavLinks>
   </Wrap>

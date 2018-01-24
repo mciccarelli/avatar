@@ -75,4 +75,39 @@ export default () => injectGlobal`
     font: 1rem/1.5 var(--baseFontFamily);
     color: black;
   }
+
+  // h2 {
+  //   font-size: 1.35rem;
+  //   font-weight: 200;
+  //   display: block;
+  //   margin-bottom: 0;
+  //   ${mq.medium`
+  //     font-size: 2rem;
+  //   `};
+  // }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 3.125rem;
+    ${mq.medium`
+      font-size: 1.5rem;
+      line-height: 1.5;
+    `} 
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--accentColor);
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .contain {
+    margin: 0 auto;
+    max-width: var(--maxWidth);
+  }
 `;
