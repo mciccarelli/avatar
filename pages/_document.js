@@ -23,6 +23,16 @@ export default class HTMLDocument extends Document {
             type="image/x-icon"
           />
           <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.css"
+          />
           {styleTags}
         </Head>
         <body>

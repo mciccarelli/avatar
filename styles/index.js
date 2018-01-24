@@ -17,6 +17,7 @@ export const mq = {
 
 export default () => injectGlobal`
   ${styledNormalize}
+
   @font-face {
     font-family: 'Conduit';
     src: url('../static/fonts/ConduitExLtITCTT.eot');

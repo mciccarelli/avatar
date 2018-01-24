@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Wrap, Content } from './styles';
-import { createMarkup } from '../../utils';
 import Markdown from 'react-markdown';
 
 const Hero = ({ entry, background }) => {
