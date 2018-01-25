@@ -11,8 +11,12 @@ export const Wrap = styled.div`
 
 export const Slide = styled.div`
   padding-right: 50px;
+  transition: filter var(--transitionSpeed) ease-in;
+  filter: ${props =>
+    props.focused && !props.className.includes('cloned')
+      ? 'blur(0)'
+      : 'blur(5px)'};
   h2 {
-    filter: ${props => (props.focused ? 'blur(0)' : 'blur(5px)')};
     font-size: 32px;
     color: white;
   }

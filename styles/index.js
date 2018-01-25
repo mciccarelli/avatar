@@ -58,6 +58,7 @@ export default () => injectGlobal`
     --baseFontFamily: 'Conduit', 'Trebuchet MS', Helvetica, sans-serif;
     --maxWidth: 1028px;
     --headerHeight: 80px;
+    --transitionSpeed: 0.10s;
   }
 
   html {
