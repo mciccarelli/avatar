@@ -6,12 +6,9 @@ export const Wrap = styled.div`
 `;
 
 export const Content = styled.div`
+  max-width: var(--maxWidth);
+  margin: 0 auto;
   padding: 40px 0;
-
-  & .contain {
-    max-width: var(--maxWidth);
-    margin: 0 auto;
-  }
 
   & h4 {
     text-transform: uppercase;
@@ -19,5 +16,6 @@ export const Content = styled.div`
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 4px;
+    margin-bottom: 0;
   }
 `;

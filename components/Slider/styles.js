@@ -3,33 +3,28 @@ import { mq } from '../../styles';
 
 export const Wrap = styled.div`
   position: relative;
-  & .slick-list {
-    padding: 0 60px;
+
+  & .slick-loading {
+    text-align: center;
   }
+`;
 
-  & .slick-slide {
-    padding-right: 40px;
-
-    & h3 {
-      color: white;
-    }
-  }
-
-  & .slick-active {
-    &:first-child h3 {
-      filter: blur(0px);
-    }
-    h3 {
-      filter: blur(5px);
-    }
+export const Slide = styled.div`
+  padding-right: 50px;
+  h2 {
+    filter: ${props => (props.focused ? 'blur(0)' : 'blur(5px)')};
+    font-size: 32px;
+    color: white;
   }
 `;
 
 export const Arrow = styled.div`
+  display: ${props => (props.flip ? 'none' : 'block')};
+  right: ${props => (props.flip ? 'auto' : '0')};
+  left: ${props => (props.flip ? '0' : 'auto')};
   position: absolute;
-  right: 40px;
   top: 50%;
   transform: translateY(-50%);
-  display: block;
   z-index: 10;
+  cursor: pointer;
 `;

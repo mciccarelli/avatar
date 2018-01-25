@@ -77,16 +77,6 @@ export default () => injectGlobal`
     color: black;
   }
 
-  // h2 {
-  //   font-size: 1.35rem;
-  //   font-weight: 200;
-  //   display: block;
-  //   margin-bottom: 0;
-  //   ${mq.medium`
-  //     font-size: 2rem;
-  //   `};
-  // }
-
   p {
     font-size: 1.125rem;
     line-height: 1.35;
