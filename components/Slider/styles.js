@@ -13,9 +13,10 @@ export const Slide = styled.div`
   padding-right: 50px;
   transition: filter var(--transitionSpeed) ease-in;
   filter: ${props =>
-    props.focused && !props.className.includes('cloned')
-      ? 'blur(0)'
+    props.focused && props.className.includes('slick-active')
+      ? 'none'
       : 'blur(5px)'};
+
   h2 {
     font-size: 32px;
     color: white;

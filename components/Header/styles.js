@@ -18,7 +18,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: var(--maxWidth);
   margin: 0 auto;
 `;
 

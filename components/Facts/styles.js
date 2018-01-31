@@ -18,4 +18,10 @@ export const Content = styled.div`
     letter-spacing: 4px;
     margin-bottom: 0;
   }
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.15625;
+    color: var(--mediumGray);
+  }
 `;

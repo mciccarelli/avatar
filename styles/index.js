@@ -53,7 +53,7 @@ export default () => injectGlobal`
 
   :root {
     --accentColor: #006CB7;
-    --mediumGray: #86888A;
+    --mediumGray: #B1B3B6;
     --lightGray: #DCDDDE;
     --baseFontFamily: 'Conduit', 'Trebuchet MS', Helvetica, sans-serif;
     --maxWidth: 1028px;

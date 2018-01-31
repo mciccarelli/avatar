@@ -1,8 +1,8 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/mciccarelli/avatar-splash-page)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/mciccarelli/avatar)
 
 # Avatar Companies
 
-splash page build with React and styled-components.
+Corporate identity site built with Next.js + styled-components.
 
 ## How to use
 
