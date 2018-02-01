@@ -1,5 +1,5 @@
+import React from 'react';
 import _ from 'lodash';
-import React, { Component } from 'react';
 import { Wrap, Arrow, Slide } from './styles';
 import Slider from 'react-slick';
 const arrRight = '../../../static/arr-right.svg';
@@ -28,7 +28,7 @@ function NextArrow(props) {
   );
 }
 
-export default class SlickSlider extends Component {
+export default class SlickSlider extends React.Component {
   constructor(props) {
     super(props);
     this.state = { inFocus: 0 };
@@ -39,9 +39,10 @@ export default class SlickSlider extends Component {
   }
   render() {
     const { items, facts } = this.props;
+    const { inFocus } = this.state;
     const settings = {
       dots: false,
-      infinite: true,
+      infinite: false,
       speed: 500,
       slidesToShow: 3,
       slidesToScroll: 1,
@@ -59,7 +60,7 @@ export default class SlickSlider extends Component {
           {facts &&
             items.map((item, idx) => {
               return (
-                <Slide key={idx} focused={this.state.inFocus === idx}>
+                <Slide key={idx} focused={inFocus === idx}>
                   {item.content}
                 </Slide>
               );

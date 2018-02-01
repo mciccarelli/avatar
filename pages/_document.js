@@ -26,12 +26,12 @@ export default class HTMLDocument extends Document {
           <link
             rel="stylesheet"
             type="text/css"
-            href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.3.15/slick.css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
           {styleTags}
         </Head>
