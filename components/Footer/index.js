@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Wrap } from './styles';
+import Markdown from 'react-markdown';
 
-export default () => (
+const Footer = ({ entry: { fields: { content } } }) => (
   <Wrap>
-    <p className="content">
-      <span>Avatar Companies, LLC</span>
-      <span>12 East 49th St, 38th fl.</span>
-      <span>New York, NY 10017</span>
-    </p>
+    <div className="contain">
+      <Markdown source={content} />
+    </div>
   </Wrap>
 );
+
+export default Footer;

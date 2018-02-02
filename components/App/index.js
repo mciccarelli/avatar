@@ -3,14 +3,14 @@ import Head from 'next/head';
 import { Header, Footer } from '../';
 import { Wrap } from './styles';
 
-const App = ({ children, title = 'Avatar Companies', contact, footer }) => (
+const App = ({ children, footer, title = 'Avatar Companies' }) => (
   <Wrap>
     <Head>
       <title>{title}</title>
     </Head>
     <Header />
     <main>{children}</main>
-    <Footer />
+    <Footer entry={footer} />
   </Wrap>
 );
 

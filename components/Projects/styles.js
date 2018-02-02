@@ -57,6 +57,7 @@ export const Row = styled.div`
   transform: ${props =>
     !props.centered ? 'translate(0, -50%)' : 'translate(-50%, -50%)'};
   animation: 0.5s ${props => (!props.centered ? pullLogos : centerLogos)} normal;
+  padding-left: ${props => (!props.centered ? '8px' : '0')};
 `;
 
 export const Logo = styled.div`
