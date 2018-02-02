@@ -1,26 +1,26 @@
 import * as React from 'react';
 import { Wrap, Content } from './styles';
+import Link from 'next/link';
 import Markdown from 'react-markdown';
 
-const Hero = ({ entry, background }) => {
+const Hero = ({ entry, background = false, homepage = false }) => {
   const {
     fields: { content, learnMoreUrl, showLearnMore, showScrollArrow }
   } = entry;
 
-  const { fields: { file: { url: bgImage } } } = background;
-
-  if (!entry || !background) return <p>loading...</p>;
-
   return (
-    <Wrap bg={`${bgImage}?w=2000&fit=scale`}>
-      <Content>
+    <Wrap bg={background !== false && `${background}?w=2000&fit=scale`}>
+      <Content homepage={homepage}>
         <Markdown source={content} />
-        {showLearnMore && (
-          <a href="#" className="cta">
-            Learn More
-          </a>
-        )}
+        {showLearnMore &&
+          homepage !== false && (
+            <Link href="/mission">
+              <a className="cta">Learn More</a>
+            </Link>
+          )}
       </Content>
+      {showScrollArrow &&
+        !homepage && <img className="arr-down" src="/static/arr-down.svg" />}
     </Wrap>
   );
 };

@@ -16,9 +16,10 @@ const HomePage = ({
   contact,
   footer
 }) => {
+  const { fields: { file: { url: heroHackground } } } = heroAsset;
   return (
     <App contact={contact} footer={footer}>
-      <Hero entry={heroEntry} background={heroAsset} />
+      <Hero entry={heroEntry} background={heroHackground} homepage={true} />
       <Facts items={facts} />
       <Leadership items={people} />
       <Facts items={facts} />

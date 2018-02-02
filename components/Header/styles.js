@@ -21,7 +21,7 @@ export const Container = styled.div`
   margin: 0 auto;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   & img {
     width: 100px;
     height: auto;

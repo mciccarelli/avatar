@@ -5,12 +5,20 @@ export const Wrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   width: 100vw;
-  min-height: 80vh;
+  min-height: ${props => (!props.bg ? '45vh' : '80vh')};
   background-image: url(${props => props.bg});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  & .arr-down {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 export const Content = styled.div`
@@ -21,9 +29,9 @@ export const Content = styled.div`
   width: 100%;
   max-width: var(--maxWidth);
   > div {
-    max-width: 595px;
     text-align: left;
-    margin-bottom: 40px;
+    max-width: ${props => (!props.homepage ? '100%' : '595px')};
+    margin-bottom: ${props => (!props.homepage ? '0' : '40px')};
   }
   & h2 {
     color: var(--accentColor);

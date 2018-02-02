@@ -1,15 +1,22 @@
 import * as React from 'react';
+import Link from 'next/link';
 import { Wrap, Container, Logo, NavLinks } from './styles';
 
 export default () => (
   <Wrap>
     <Container>
       <Logo>
-        <img src="../static/avatar-logo.svg" />
+        <Link href="/" prefetch>
+          <a>
+            <img src="../static/avatar-logo.svg" />
+          </a>
+        </Link>
       </Logo>
       <NavLinks>
         <li>
-          <a href="javascript:void(0)">Mission</a>
+          <Link href="/mission" prefetch>
+            <a>Mission</a>
+          </Link>
         </li>
         <li>
           <a href="javascript:void(0)">Team</a>
