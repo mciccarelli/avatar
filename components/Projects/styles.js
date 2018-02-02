@@ -93,8 +93,12 @@ export const Modal = styled.div`
   top: 50%;
   right: 20%;
   transform: translateY(-50%);
-  background: white;
-  padding: 15px;
+
+  > div {
+    background: white;
+    padding: 15px;
+    position: relative;
+  }
 
   & h2 {
     font-size: 1.6875rem;
@@ -118,5 +122,11 @@ export const Modal = styled.div`
     &.description {
       color: #9ea1a2;
     }
+  }
+
+  & img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
 `;

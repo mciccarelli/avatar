@@ -1,18 +1,18 @@
 import React from 'react';
-import { Wrap, Content, Container, Column, Row } from './styles';
+import _ from 'lodash';
+import { Avatar, Wrap, Content, Container, Column, Row, Modal } from './styles';
 
 export default class Leadership extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { activeProfile: false, fillBg: false };
+    this.state = { activeProfile: {}, fillBg: false };
   }
-  _setProfile(idx) {
-    if (this.state.activeProfile === idx) {
-      // console.log('clicked while open... should close');
-      this.setState({ activeProfile: false });
+  _setProfile(profile) {
+    const { activeProfile } = this.state;
+    if (!_.isEmpty(activeProfile) && activeProfile.sys.id === profile.sys.id) {
+      this.setState({ activeProfile: {} });
     } else {
-      // console.log('setting activeProfile', idx);
-      this.setState({ activeProfile: idx });
+      this.setState({ activeProfile: profile });
     }
   }
   _setBgFill(fill) {
@@ -34,14 +34,29 @@ export default class Leadership extends React.Component {
                       key={idx}
                       onMouseEnter={() => this._setBgFill(true)}
                       onMouseLeave={() => this._setBgFill(false)}
-                      onClick={() => this._setProfile(idx)}
-                      active={activeProfile && activeProfile === idx}
+                      onClick={() => this._setProfile(item)}
+                      active={
+                        !_.isEmpty(activeProfile) &&
+                        activeProfile.sys.id === item.sys.id
+                      }
                     >
-                      <img src={item.fields.avatar.fields.file.url} />
+                      <Avatar
+                        active={
+                          !_.isEmpty(activeProfile) &&
+                          activeProfile.sys.id === item.sys.id
+                        }
+                      >
+                        <img src={item.fields.avatar.fields.file.url} />
+                        <img
+                          className="arrow"
+                          src="/static/arr-right-mini.svg"
+                        />
+                      </Avatar>
                       <div>
                         <h2>{item.fields.name}</h2>
                         <p>{item.fields.title}</p>
                       </div>
+                      <Modal show={!_.isEmpty(activeProfile)} />
                     </Column>
                   );
                 })}

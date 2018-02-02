@@ -78,3 +78,36 @@ export const Column = styled.div`
     margin: 0;
   }
 `;
+
+export const Avatar = styled.div`
+  position: relative;
+  line-height: 0;
+
+  & .arrow {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    transform: ${props => (!props.active ? 'rotate(0)' : 'rotate(-180deg)')};
+  }
+`;
+
+export const Modal = styled.div`
+  transition: all var(--transitionSpeed) ease-in-out;
+  transition-delay: ${props => (!props.show ? '0' : '0.5s')};
+  opacity: ${props => (!props.show ? '0' : '1')};
+  visibility: ${props => (!props.show ? 'hidden' : 'visible')};
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  max-width: 355px;
+  min-height: 280px;
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+
+  > div {
+    background: white;
+    padding: 15px;
+    position: relative;
+  }
+`;

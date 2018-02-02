@@ -69,6 +69,10 @@ export default class Projects extends React.Component {
                   {activeProject.fields.content && (
                     <Markdown source={activeProject.fields.content} />
                   )}
+                  <img
+                    src="/static/i-close.svg"
+                    onClick={() => this.setState({ showModal: false })}
+                  />
                 </div>
               )}
           </Modal>
