@@ -1,4 +1,3 @@
-import styledNormalize from 'styled-normalize';
 import { injectGlobal, css } from 'styled-components';
 
 // media query helper
@@ -16,8 +15,6 @@ export const mq = {
 };
 
 export default () => injectGlobal`
-  ${styledNormalize}
-
   @font-face {
     font-family: 'Conduit';
     src: url('../static/fonts/ConduitExLtITCTT.eot');
@@ -102,4 +99,7 @@ export default () => injectGlobal`
     margin: 0 auto;
     max-width: var(--maxWidth);
   }
+
+  #nprogress .bar { background: var(--accentColor); }
+  #nprogress .spinner { display: none; }
 `;

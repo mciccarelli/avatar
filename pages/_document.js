@@ -1,10 +1,12 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import baseStyles from '../styles/index';
+import globalStyles from '../styles/index';
+import vendorStyles from '../styles/vendor';
 
 export default class HTMLDocument extends Document {
   render() {
-    baseStyles();
+    vendorStyles();
+    globalStyles();
     const sheet = new ServerStyleSheet();
     const main = sheet.collectStyles(<Main />);
     const styleTags = sheet.getStyleElement();
@@ -26,12 +28,12 @@ export default class HTMLDocument extends Document {
           <link
             rel="stylesheet"
             type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+            href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
           />
           <link
             rel="stylesheet"
             type="text/css"
-            href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+            href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
           {styleTags}
         </Head>
