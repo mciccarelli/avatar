@@ -8,7 +8,7 @@ export const mq = {
     }
   `,
   large: (...args) => css`
-    @media (min-width: 1200px) {
+    @media (min-width: 1024px) {
       ${css(...args)};
     }
   `

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mq } from '../../styles';
 
-export const Wrap = styled.div`
+export const NavContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,12 +12,6 @@ export const Wrap = styled.div`
   display: flex;
   align-items: center;
   background: white;
-`;
-
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
   margin: 0 auto;
 `;
 
@@ -28,22 +22,26 @@ export const Logo = styled.div`
   }
 `;
 
-export const NavLinks = styled.ul`
+export const Menu = styled.ul`
   margin: 0 0 0 auto;
   list-style-type: none;
+  display: none;
+  ${mq.medium`
+    display: flex;
+  `};
+`;
 
-  & li {
-    display: inline-block;
-    margin-right: 20px;
-    font-size: 16px;
-    text-transform: uppercase;
-    &:last-of-type {
-      margin-right: 0;
-    }
+export const MenuItem = styled.li`
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  &:last-of-type {
+    margin-right: 0;
+  }
 
-    & a {
-      color: #B1B3B6;
-      text-decoration: none;
-    }
+  & a {
+    color: ${props => (props && props.active ? `var(--accentColor)` : `#b1b3b6`)};
+    text-decoration: none;
   }
 `;

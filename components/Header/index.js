@@ -1,36 +1,35 @@
-import * as React from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Wrap, Container, Logo, NavLinks } from './styles';
+import Router from 'next/router';
+import { Logo, Menu, MenuItem, NavContainer } from './styles';
 
-export default () => (
-  <Wrap>
-    <Container>
-      <Logo>
-        <Link href="/" prefetch>
-          <a>
-            <img src="../static/avatar-logo.svg" />
-          </a>
+export default ({ pathname }) => (
+  <NavContainer>
+    <Logo>
+      <Link prefetch href="/">
+        <a>
+          <img src="../static/avatar-logo.svg" />
+        </a>
+      </Link>
+    </Logo>
+    <Menu>
+      <MenuItem active={pathname && pathname === `/mission`}>
+        <Link prefetch href="/mission">
+          <a>Mission</a>
         </Link>
-      </Logo>
-      <NavLinks>
-        <li>
-          <Link href="/mission" prefetch>
-            <a>Mission</a>
-          </Link>
-        </li>
-        <li>
-          <a href="javascript:void(0)">Team</a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">Portfolio</a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">News</a>
-        </li>
-        <li>
-          <a href="javascript:void(0)">Contact</a>
-        </li>
-      </NavLinks>
-    </Container>
-  </Wrap>
+      </MenuItem>
+      <MenuItem>
+        <a href="javascript:void(0)">Team</a>
+      </MenuItem>
+      <MenuItem>
+        <a href="javascript:void(0)">Portfolio</a>
+      </MenuItem>
+      <MenuItem>
+        <a href="javascript:void(0)">News</a>
+      </MenuItem>
+      <MenuItem>
+        <a href="javascript:void(0)">Contact</a>
+      </MenuItem>
+    </Menu>
+  </NavContainer>
 );

@@ -7,11 +7,14 @@ export const Wrap = styled.div`
   justify-content: center;
   position: relative;
   width: 100vw;
-  min-height: ${props => (!props.bg ? '45vh' : '80vh')};
+  min-height: 45vh;
   background-image: url(${props => props.bg});
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  ${mq.medium`
+    min-height: ${props => (!props.bg ? '45vh' : '80vh')};
+  `}
 
   & .arr-down {
     position: absolute;
@@ -27,7 +30,13 @@ export const Content = styled.div`
   align-items: flex-start;
   transform: translateY(-80px);
   width: 100%;
-  max-width: var(--maxWidth);
+  padding: 0 2rem;
+
+  ${mq.large`
+    max-width: var(--maxWidth);
+    padding: 0;
+  `};
+
   > div {
     text-align: left;
     max-width: ${props => (!props.homepage ? '100%' : '595px')};
@@ -35,10 +44,14 @@ export const Content = styled.div`
   }
   & h2 {
     color: var(--accentColor);
-    font-size: 36px;
+    font-size: 25px;
     line-height: 1.16;
     font-weight: 200;
     margin: 0;
+
+    ${mq.medium`
+      font-size: 36px;
+    `};
   }
   & .cta {
     color: #b1b3b6;
