@@ -1,8 +1,11 @@
+import _ from 'lodash';
 import styled from 'styled-components';
 import { mq } from '../../styles';
 
+const avatarSize = '113px';
+
 export const Wrap = styled.div`
-  background-image: linear-gradient(-149deg, #ffffff 15%, #d8d8d8 100%);
+  background-image: linear-gradient(-149deg, #d8d8d8 15%, #ffffff 100%);
   min-height: 60vh;
   position: relative;
   &:after {
@@ -32,34 +35,29 @@ export const Wrap = styled.div`
 `;
 
 export const Container = styled.div`
-  max-width: 580px;
+  max-width: 590px;
   margin-left: 40px;
   position: relative;
   transition: background 0.22s ease-in-out;
+  display: flex;
+  flex-direction: column;
   background: ${props =>
     !props.filled ? 'none' : 'rgba(255, 255, 255, 0.85)'};
 `;
 
-export const Row = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Column = styled.div`
+export const Person = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
   align-items: flex-end;
-  margin-bottom: 20px;
   z-index: 2;
+  overflow: hidden;
+  margin-bottom: ${props => (!props.last ? '20px' : '0')};
 
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-
-  & img {
-    max-width: 113px;
-    margin-right: 20px;
+  & section {
+    transition: opacity 0.2s ease;
+    opacity: ${props => (props.zoom ? '0' : '1')};
+    visibility: ${props => (props.show ? 'hidden' : 'visible')};
   }
 
   & h2 {
@@ -67,9 +65,10 @@ export const Column = styled.div`
     font-weight: 200;
     line-height: 1.1111;
     margin: 0;
+    transform: ${props => (props.isActive ? 'translateY(-100px)' : '')};
   }
 
-  & p {
+  & h3 {
     font-size: 1.3125rem;
     font-weight: 200;
     line-height: 1;
@@ -83,31 +82,79 @@ export const Avatar = styled.div`
   position: relative;
   line-height: 0;
 
+  & img {
+    max-width: ${avatarSize};
+    margin-right: 20px;
+    opacity: ${props => (!props.isActive ? '0.9' : '1')};
+  }
+
   & .arrow {
     position: absolute;
     bottom: 8px;
     right: 8px;
-    transform: ${props => (!props.active ? 'rotate(0)' : 'rotate(-180deg)')};
+    transform: ${props => (!props.isActive ? 'rotate(0)' : 'rotate(-180deg)')};
   }
 `;
 
-export const Modal = styled.div`
-  transition: all var(--transitionSpeed) ease-in-out;
-  transition-delay: ${props => (!props.show ? '0' : '0.5s')};
-  opacity: ${props => (!props.show ? '0' : '1')};
-  visibility: ${props => (!props.show ? 'hidden' : 'visible')};
+export const Overlay = styled.div`
   position: absolute;
   z-index: 3;
-  width: 100%;
-  max-width: 355px;
-  min-height: 280px;
-  top: 50%;
-  right: 20%;
-  transform: translateY(-50%);
+  top: 0;
+  right: 0;
+  width: calc(100% - ${avatarSize});
+  height: 100%;
+  padding: 20px;
+  transition: transform 600ms, opacity 600ms;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform: ${props => (!props.show ? 'translateY(100%)' : 'translateY(0)')};
+  opacity: ${props => (!props.show ? '0' : '1')};
+  visibility: ${props => (!props.show ? 'hidden' : 'visible')};
+
+  & section {
+    overflow-y: auto;
+    height: 100%;
+    &::-webkit-scrollbar {
+      width: 11px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #d8d8d8;
+      box-shadow: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--accentColor);
+      outline: 0;
+    }
+  }
 
   > div {
     background: white;
-    padding: 15px;
+    padding: 20px;
     position: relative;
+  }
+
+  & h2 {
+    font-size: 1.6875rem;
+    font-weight: 200;
+    line-height: 1.1111;
+    margin: 0;
+  }
+
+  & h3 {
+    font-size: 1.3125rem;
+    font-weight: 200;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--accentColor);
+    margin: 0 0 1.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 200;
+    color: #231f20;
+    max-width: 390px;
+    margin: 0 0 0.625rem;
   }
 `;

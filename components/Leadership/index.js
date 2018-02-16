@@ -1,23 +1,28 @@
 import React from 'react';
 import _ from 'lodash';
-import { Avatar, Wrap, Content, Container, Column, Row, Modal } from './styles';
+import Markdown from 'react-markdown';
+import { Avatar, Wrap, Content, Container, Person, Overlay } from './styles';
 
 export default class Leadership extends React.Component {
   constructor(props) {
     super(props);
     this.state = { activeProfile: {}, fillBg: false };
   }
-  _setProfile(profile) {
+  _isActive(id) {
     const { activeProfile } = this.state;
-    if (!_.isEmpty(activeProfile) && activeProfile.sys.id === profile.sys.id) {
-      this.setState({ activeProfile: {} });
-    } else {
-      this.setState({ activeProfile: profile });
-    }
+    return !_.isEmpty(activeProfile) && activeProfile.sys.id === id;
   }
   _setBgFill(fill) {
     this.setState({ fillBg: fill });
   }
+  _setProfile(profile) {
+    const { activeProfile } = this.state;
+    console.log('setting profile...');
+    const reset =
+      !_.isEmpty(activeProfile) && activeProfile.sys.id === profile.sys.id;
+    this.setState({ activeProfile: !reset ? profile : {} });
+  }
+
   render() {
     const { items } = this.props;
     const { activeProfile, fillBg } = this.state;
@@ -25,42 +30,47 @@ export default class Leadership extends React.Component {
       <Wrap>
         <div className="contain">
           <h4>Leadership</h4>
-          <Container filled={fillBg !== false}>
-            <Row>
-              {items &&
-                items.map((item, idx) => {
-                  return (
-                    <Column
-                      key={idx}
-                      onMouseEnter={() => this._setBgFill(true)}
-                      onMouseLeave={() => this._setBgFill(false)}
-                      onClick={() => this._setProfile(item)}
-                      active={
-                        !_.isEmpty(activeProfile) &&
-                        activeProfile.sys.id === item.sys.id
-                      }
-                    >
-                      <Avatar
-                        active={
-                          !_.isEmpty(activeProfile) &&
-                          activeProfile.sys.id === item.sys.id
-                        }
-                      >
-                        <img src={item.fields.avatar.fields.file.url} />
-                        <img
-                          className="arrow"
-                          src="/static/arr-right-mini.svg"
-                        />
-                      </Avatar>
-                      <div>
-                        <h2>{item.fields.name}</h2>
-                        <p>{item.fields.title}</p>
-                      </div>
-                      <Modal show={!_.isEmpty(activeProfile)} />
-                    </Column>
-                  );
-                })}
-            </Row>
+          <Container
+            filled={fillBg || (activeProfile && !_.isEmpty(activeProfile))}
+            profile={activeProfile}
+          >
+            {items &&
+              items.map((item, idx) => {
+                const {
+                  sys: { id },
+                  fields: { avatar, name, profile, title }
+                } = item;
+                return (
+                  <Person
+                    key={idx}
+                    onMouseEnter={() => this._setBgFill(true)}
+                    onMouseLeave={() => this._setBgFill(false)}
+                    onClick={() => this._setProfile(item)}
+                    isActive={this._isActive(id)}
+                    zoom={!_.isEmpty(activeProfile)}
+                    last={idx === items.length - 1}
+                  >
+                    <Avatar isActive={this._isActive(id)}>
+                      <img src={avatar && avatar.fields.file.url} />
+                      <img className="arrow" src="/static/arr-right-mini.svg" />
+                    </Avatar>
+                    <section>
+                      <h2>{name}</h2>
+                      <h3>{title}</h3>
+                    </section>
+                  </Person>
+                );
+              })}
+            {!_.isEmpty(activeProfile) &&
+              activeProfile.fields && (
+                <Overlay show={!_.isEmpty(activeProfile)}>
+                  <section>
+                    <h2>{activeProfile.fields.name}</h2>
+                    <h3>{activeProfile.fields.title}</h3>
+                    <Markdown source={activeProfile.fields.profile} />
+                  </section>
+                </Overlay>
+              )}
           </Container>
         </div>
       </Wrap>
