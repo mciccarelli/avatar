@@ -15,7 +15,12 @@ class App extends Component {
     Router.onRouteChangeError = () => NProgress.done();
   }
   render() {
-    const { children, footer, pathname, title = 'Avatar Companies' } = this.props;
+    const {
+      children,
+      footer,
+      pathname,
+      title = 'Avatar Companies'
+    } = this.props;
     return (
       <Wrap>
         <Head>

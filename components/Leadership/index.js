@@ -17,7 +17,6 @@ export default class Leadership extends React.Component {
   }
   _setProfile(profile) {
     const { activeProfile } = this.state;
-    console.log('setting profile...');
     const reset =
       !_.isEmpty(activeProfile) && activeProfile.sys.id === profile.sys.id;
     this.setState({ activeProfile: !reset ? profile : {} });
@@ -27,7 +26,7 @@ export default class Leadership extends React.Component {
     const { items } = this.props;
     const { activeProfile, fillBg } = this.state;
     return (
-      <Wrap>
+      <Wrap id="leadership">
         <div className="contain">
           <h4>Leadership</h4>
           <Container

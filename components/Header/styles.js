@@ -40,8 +40,9 @@ export const MenuItem = styled.li`
     margin-right: 0;
   }
 
-  & a {
+  & a, & span {
     color: ${props => (props && props.active ? `var(--accentColor)` : `#b1b3b6`)};
+    cursor: pointer;
     text-decoration: none;
   }
 `;

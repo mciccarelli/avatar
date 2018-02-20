@@ -1,15 +1,25 @@
-import * as React from 'react';
+import React from 'react';
+import _ from 'lodash';
 import { Wrap, Content } from './styles';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
 
-const Hero = ({ entry, background = false, homepage = false }) => {
-  const {
-    fields: { content, learnMoreUrl, showLearnMore, showScrollArrow }
-  } = entry;
+const Hero = ({
+  backgroundImage,
+  content,
+  learnMoreUrl,
+  showLearnMore,
+  showScrollArrow,
+  homepage = false
+}) => {
+  let bgImageSrc = false;
+  if (backgroundImage && !_.isEmpty(backgroundImage)) {
+    const { fields: { file: { url } } } = backgroundImage;
+    bgImageSrc = url;
+  }
 
   return (
-    <Wrap bg={background !== false && `${background}?w=2000&fit=scale`}>
+    <Wrap bg={bgImageSrc && `${bgImageSrc}?w=2000&fit=scale`}>
       <Content homepage={homepage}>
         <Markdown source={content} />
         {showLearnMore &&

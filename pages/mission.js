@@ -16,10 +16,10 @@ import {
 } from '../api';
 
 const MissionPage = ({ contact, pageData, footer, pathname }) => {
-  const { fields: { hero, modules } } = pageData;
+  const { fields: { hero: { fields: heroFields }, modules } } = pageData;
   return (
     <App contact={contact} footer={footer} pathname={pathname}>
-      <Hero entry={hero} />
+      <Hero {...heroFields} />
       {modules &&
         modules.map(section => {
           const { fields, sys: { id } } = section;

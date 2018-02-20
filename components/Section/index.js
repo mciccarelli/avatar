@@ -15,6 +15,7 @@ const Section = ({
     const { fields: { file: { url } } } = backgroundImage;
     bgImageSrc = url;
   }
+
   return (
     <Wrap bg={bgImageSrc && `${bgImageSrc}`}>
       <Content

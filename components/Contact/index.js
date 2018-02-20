@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Wrap, Content } from './styles';
 import Markdown from 'react-markdown';
 
@@ -6,7 +6,7 @@ const Contact = ({ entry }) => {
   const { fields: { content, title } } = entry;
 
   return (
-    <Wrap>
+    <Wrap id="contact">
       <Content>
         <h4>{title}</h4>
         <Markdown source={content} />

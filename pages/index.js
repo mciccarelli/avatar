@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import { App, Contact, Hero, Facts, Leadership, Projects } from '../components';
 import {
   fetchAssetById,
@@ -11,33 +12,30 @@ const HomePage = ({
   contact,
   facts,
   footer,
-  heroAsset,
-  heroEntry,
+  hero: { fields: heroFields },
   pathname,
   people,
   projects
-}) => {
-  const { fields: { file: { url: heroHackground } } } = heroAsset;
-  return (
-    <App contact={contact} footer={footer} pathname={pathname}>
-      <Hero entry={heroEntry} background={heroHackground} homepage={true} />
-      <Facts items={facts} />
-      <Leadership items={people} />
-      <Facts items={facts} />
-      <Projects items={projects} />
-      <Contact entry={contact} />
-    </App>
-  );
-};
+}) => (
+  <App contact={contact} footer={footer} pathname={pathname}>
+    {heroFields &&
+      !_.isEmpty(heroFields) && <Hero homepage={true} {...heroFields} />}
+    <Facts items={facts} />
+    <Leadership items={people} />
+    <Facts items={facts} />
+    <Projects items={projects} />
+    <Contact entry={contact} />
+  </App>
+);
 
 HomePage.getInitialProps = async ({ pathname = '/' }) => {
   const contact = await fetchEntryById('6jLNWdukXSisiIwEq6cEQs');
   const facts = await fetchEntriesForContentType({ content_type: 'fact' });
   const footer = await fetchEntryById('6G4U286BvaieYuWc4S0i2W');
-  const heroEntry = await fetchEntryById('22WQgsUiA48Q8eIKaWMaU8');
-  const heroAsset = await fetchAssetById(
-    heroEntry.fields.backgroundImage.sys.id
-  );
+  const hero = await fetchEntriesForContentType({
+    content_type: 'hero',
+    ['sys.id']: '22WQgsUiA48Q8eIKaWMaU8' // filter 'homepage' hero only
+  });
   const people = await fetchEntriesForContentType({
     content_type: 'person',
     limit: 5
@@ -51,8 +49,7 @@ HomePage.getInitialProps = async ({ pathname = '/' }) => {
     contact,
     facts,
     footer,
-    heroAsset,
-    heroEntry,
+    hero: _.isArray(hero) ? hero[0] : {},
     pathname,
     people,
     projects

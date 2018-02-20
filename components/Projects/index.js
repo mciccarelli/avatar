@@ -20,7 +20,7 @@ export default class Projects extends React.Component {
     const { items } = this.props;
     const { activeProject, showModal } = this.state;
     return (
-      <Wrap>
+      <Wrap id="projects">
         <Container>
           <h4>Projects</h4>
           <Row centered={!showModal}>
