@@ -1,5 +1,13 @@
 import React from 'react';
-import { App, Contact, Hero, Facts, Leadership, Projects } from '../components';
+import {
+  App,
+  Contact,
+  Hero,
+  Facts,
+  Leadership,
+  Projects,
+  Section
+} from '../components';
 import {
   fetchAssetById,
   fetchEntryById,
@@ -7,10 +15,16 @@ import {
   fetchEntriesByType
 } from '../api';
 
-const MissionPage = ({ contact, footer, heroEntry, pathname }) => {
+const MissionPage = ({ contact, pageData, footer, pathname }) => {
+  const { fields: { hero, modules } } = pageData;
   return (
     <App contact={contact} footer={footer} pathname={pathname}>
-      <Hero entry={heroEntry} />
+      <Hero entry={hero} />
+      {modules &&
+        modules.map(section => {
+          const { fields, sys: { id } } = section;
+          return <Section key={id} {...fields} />;
+        })}
       <Contact entry={contact} />
     </App>
   );
@@ -19,9 +33,17 @@ const MissionPage = ({ contact, footer, heroEntry, pathname }) => {
 MissionPage.getInitialProps = async ({ pathname = '/mission' }) => {
   const contact = await fetchEntryById('6jLNWdukXSisiIwEq6cEQs');
   const footer = await fetchEntryById('6G4U286BvaieYuWc4S0i2W');
-  const heroEntry = await fetchEntryById('5rKoratd8AUKkK8oYCKGUk');
+  const missonContainer = await fetchEntriesForContentType({
+    content_type: 'pageContainer',
+    ['sys.id']: '6EBHVuTglyWckAk6yce4Q0' // filter 'mission' pageContainer only
+  });
 
-  return { contact, footer, heroEntry, pathname };
+  return {
+    contact,
+    footer,
+    pathname,
+    pageData: missonContainer[0]
+  };
 };
 
 export default MissionPage;

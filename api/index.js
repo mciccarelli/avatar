@@ -37,17 +37,9 @@ export const fetchAllAssets = id => {
 };
 
 // get entries by content type
-export const fetchEntriesForContentType = (
-  type,
-  limit = 10,
-  order = '-sys.createdAt'
-) => {
+export const fetchEntriesForContentType = (req) => {
   return contentfulClient
-    .getEntries({
-      content_type: type,
-      limit,
-      order
-    })
+    .getEntries(req)
     .then(response => response.items)
     .catch(error => {
       console.log(`Error occurred while fetching Entries: ${error}`);
