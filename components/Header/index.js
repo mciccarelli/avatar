@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import Link from 'next/link';
 import Router from 'next/router';
 import { Hamburger, Logo, Menu, MenuItem, NavContainer } from './styles';
@@ -12,17 +13,23 @@ class Header extends React.Component {
     const { open } = this.state;
     this.setState({ open: !open });
   };
+  _handleClick = () => {
+    const { open } = this.state;
+    if (!open) return;
+    // close menu
+    this.setState({ open: false });
+  };
   _handleRoute = (e, pathname, selector) => {
     e.preventDefault();
     Router.push(pathname).then(() => {
       const scrollToElement = document.querySelector(selector);
-      // .25s delay
+      // .2s delay
       setTimeout(() => {
-        if (scrollToElement) {
+        if (scrollToElement && !_.isEmpty(scrollToElement)) {
           // scroll to section
           scrollToElement.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 250);
+      }, 200);
     });
   };
   _renderMenuItem = (text, href, selector) => {
@@ -70,7 +77,7 @@ class Header extends React.Component {
               const { text, href, selector } = item;
               return (
                 <MenuItem
-                  onClick={this._toggleMenu}
+                  onClick={this._handleClick}
                   key={`item-${idx + 1}`}
                   active={pathname === href && pathname === '/mission'}
                 >
