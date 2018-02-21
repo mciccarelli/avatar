@@ -10,7 +10,10 @@ export const Content = styled.div`
   width: 100%;
   max-width: var(--maxWidth);
   margin: 0 auto;
-  padding: 30px 0 50px;
+  padding: 1.5rem;
+  ${mq.medium`
+    padding: 2.5rem 0;
+  `};
 
   & h4 {
     text-transform: uppercase;

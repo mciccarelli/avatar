@@ -8,11 +8,14 @@ export const NavContainer = styled.div`
   z-index: 100;
   width: 100%;
   height: var(--headerHeight);
-  padding: 0 40px;
   display: flex;
   align-items: center;
   background: white;
   margin: 0 auto;
+  padding: 0 1.5rem;
+  ${mq.medium`
+    padding: 0 2.5rem;
+  `};
 `;
 
 export const Logo = styled.div`
@@ -49,7 +52,8 @@ export const Menu = styled.ul`
     z-index: 10;
     background: #fff;
 
-    & a, & span {
+    & a,
+    & span {
       font-size: 2rem;
     }
   }

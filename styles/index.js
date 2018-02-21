@@ -80,10 +80,11 @@ export default () => injectGlobal`
     line-height: 1.35;
     font-weight: 200;
     margin-top: 0;
-    margin-bottom: 3.125rem;
+    margin-bottom: 0.625rem;
     ${mq.medium`
       font-size: 1.5rem;
       line-height: 1.5;
+      margin-bottom: 2.5rem;
     `} 
   }
 

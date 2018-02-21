@@ -30,7 +30,7 @@ export const Content = styled.div`
   align-items: flex-start;
   transform: translateY(-80px);
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 
   ${mq.large`
     max-width: var(--maxWidth);

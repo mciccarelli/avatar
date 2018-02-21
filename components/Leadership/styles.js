@@ -8,10 +8,12 @@ export const Wrap = styled.div`
   background-image: linear-gradient(-149deg, #d8d8d8 15%, #ffffff 100%);
   min-height: 60vh;
   position: relative;
+  z-index: 1;
   &:after {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 1;
     width: 100%;
     height: 100%;
     content: ' ';
@@ -21,7 +23,10 @@ export const Wrap = styled.div`
   }
 
   & .contain {
-    padding: 40px 0;
+    padding: 1.5rem;
+    ${mq.medium`
+      padding: 2.5rem 0;
+    `};
   }
 
   & h4 {
@@ -30,19 +35,26 @@ export const Wrap = styled.div`
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 4px;
-    margin-bottom: 40px;
+    margin-bottom: 1.5rem;
+    ${mq.medium`
+      margin-bottom: 2.5rem;
+    `};
   }
 `;
 
 export const Container = styled.div`
   max-width: 590px;
-  margin-left: 40px;
   position: relative;
   transition: background 0.22s ease-in-out;
   display: flex;
   flex-direction: column;
+  z-index: 2;
   background: ${props =>
     !props.filled ? 'none' : 'rgba(255, 255, 255, 0.85)'};
+
+  ${mq.medium`
+    margin-left: 2.5rem;
+  `};
 `;
 
 export const Person = styled.div`

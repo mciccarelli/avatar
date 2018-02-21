@@ -41,10 +41,13 @@ export const Wrap = styled.div`
 export const Container = styled.div`
   width: 100%;
   max-width: var(--maxWidth);
-  margin: 0 auto;
-  padding: 40px 0;
   position: relative;
   flex: 1;
+  margin: 0 auto;
+  padding: 1.5rem;
+  ${mq.medium`
+    padding: 2.5rem 0;
+  `};
 `;
 
 export const Row = styled.div`
@@ -75,7 +78,8 @@ export const Logo = styled.div`
     transition: all var(--transitionSpeed) ease-in-out;
     &.pulled {
       opacity: ${props => (!props.active ? '0.35' : '1')};
-      filter: ${props => (!props.active ? 'blur(3px) grayscale(1) ' : 'blur(0) grayscale(0)')};
+      filter: ${props =>
+        !props.active ? 'blur(3px) grayscale(1) ' : 'blur(0) grayscale(0)'};
     }
   }
 `;
