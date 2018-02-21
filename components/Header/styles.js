@@ -22,26 +22,61 @@ export const Logo = styled.div`
   }
 `;
 
-export const Menu = styled.ul`
+export const Hamburger = styled.img`
   margin: 0 0 0 auto;
-  list-style-type: none;
-  display: none;
+  display: flex;
   ${mq.medium`
+    display: none
+  `};
+`;
+
+export const Menu = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+
+  &.open {
+    position: absolute;
+    top: var(--headerHeight);
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: #fff;
+
+    & a, & span {
+      font-size: 2rem;
+    }
+  }
+
+  ${mq.medium`
+    margin: 0 0 0 auto;
     display: flex;
   `};
 `;
 
 export const MenuItem = styled.li`
-  display: inline-block;
+  text-align: center;
   margin-right: 20px;
   font-size: 16px;
   text-transform: uppercase;
-  &:last-of-type {
-    margin-right: 0;
-  }
 
-  & a, & span {
-    color: ${props => (props && props.active ? `var(--accentColor)` : `#b1b3b6`)};
+  ${mq.medium`
+    display: inline-block;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  `};
+
+  & a,
+  & span {
+    color: ${props =>
+      props && props.active ? `var(--accentColor)` : `#b1b3b6`};
     cursor: pointer;
     text-decoration: none;
   }
