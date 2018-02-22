@@ -49,8 +49,9 @@ export const Menu = styled.ul`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: -1;
     background: #fff;
+    transform: translateY(calc(0px - var(--headerHeight)));
 
     & a,
     & span {
