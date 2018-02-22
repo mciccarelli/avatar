@@ -92,16 +92,32 @@ export const Modal = styled.div`
   position: absolute;
   z-index: 3;
   width: 100%;
-  max-width: 355px;
-  min-height: 280px;
-  top: 50%;
-  right: 20%;
-  transform: translateY(-50%);
+  height: 100%;
+  top: 0;
+  right: 0;
+
+  ${mq.medium`
+    top: 50%;
+    right: 20%;
+    transform: translateY(-50%);
+    max-width: 355px;
+    min-height: 280px;
+    height: auto;
+  `};
 
   > div {
     background: white;
-    padding: 15px;
-    position: relative;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: 1.5rem;
+
+    ${mq.medium`
+      position: relative;
+      top: auto;
+      left: auto;
+    `};
   }
 
   & h2 {
