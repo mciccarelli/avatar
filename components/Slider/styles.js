@@ -32,4 +32,8 @@ export const Arrow = styled.div`
   transform: translateY(-50%);
   z-index: 10;
   cursor: pointer;
+
+  & img {
+    max-width: 20px;
+  }
 `;

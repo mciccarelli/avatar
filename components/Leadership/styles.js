@@ -25,7 +25,7 @@ export const Wrap = styled.div`
   & .contain {
     padding: 1.5rem;
     ${mq.medium`
-      padding: 2.5rem 0;
+      padding: 2.5rem 1.5rem;
     `};
   }
 

@@ -15,7 +15,7 @@ import {
   fetchEntriesByType
 } from '../api';
 
-const MissionPage = ({ contact, pageData, footer, pathname }) => {
+const AboutPage = ({ contact, pageData, footer, pathname }) => {
   const { fields: { hero: { fields: heroFields }, modules } } = pageData;
   return (
     <App contact={contact} footer={footer} pathname={pathname}>
@@ -30,20 +30,20 @@ const MissionPage = ({ contact, pageData, footer, pathname }) => {
   );
 };
 
-MissionPage.getInitialProps = async ({ pathname = '/mission' }) => {
+AboutPage.getInitialProps = async ({ pathname = '/about' }) => {
   const contact = await fetchEntryById('6jLNWdukXSisiIwEq6cEQs');
   const footer = await fetchEntryById('6G4U286BvaieYuWc4S0i2W');
-  const missonContainer = await fetchEntriesForContentType({
+  const aboutContainer = await fetchEntriesForContentType({
     content_type: 'pageContainer',
-    ['sys.id']: '6EBHVuTglyWckAk6yce4Q0' // filter 'mission' pageContainer only
+    ['sys.id']: '6EBHVuTglyWckAk6yce4Q0' // filter 'about' pageContainer only
   });
 
   return {
     contact,
     footer,
     pathname,
-    pageData: missonContainer[0]
+    pageData: aboutContainer[0]
   };
 };
 
-export default MissionPage;
+export default AboutPage;

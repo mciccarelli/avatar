@@ -14,13 +14,20 @@ export const Wrap = styled.div`
   background-size: cover;
   ${mq.medium`
     min-height: ${props => (!props.bg ? '45vh' : '80vh')};
-  `}
-
-  & .arr-down {
+  `} & .arr-down {
     position: absolute;
     bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  & video {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
   }
 `;
 
@@ -31,11 +38,7 @@ export const Content = styled.div`
   transform: translateY(-80px);
   width: 100%;
   padding: 0 1.5rem;
-
-  ${mq.large`
-    max-width: var(--maxWidth);
-    padding: 0;
-  `};
+  max-width: var(--maxWidth);
 
   > div {
     text-align: left;

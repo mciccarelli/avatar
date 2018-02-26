@@ -10,6 +10,7 @@ const Hero = ({
   learnMoreUrl,
   showLearnMore,
   showScrollArrow,
+  videoUrl,
   homepage = false
 }) => {
   let bgImageSrc = false;
@@ -24,11 +25,16 @@ const Hero = ({
         <Markdown source={content} />
         {showLearnMore &&
           homepage !== false && (
-            <Link href="/mission">
+            <Link href={learnMoreUrl}>
               <a className="cta">Learn More</a>
             </Link>
           )}
       </Content>
+      {/* {videoUrl && (
+        <video id="video-background" autoPlay loop muted playsInline>
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      )} */}
       {showScrollArrow &&
         !homepage && <img className="arr-down" src="/static/arr-down.svg" />}
     </Wrap>

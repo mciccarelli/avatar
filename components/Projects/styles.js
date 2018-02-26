@@ -18,13 +18,6 @@ export const Wrap = styled.div`
   min-height: 60vh;
   display: flex;
 
-  &:hover {
-    & h4 {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
-
   & h4 {
     text-transform: uppercase;
     color: white;
@@ -32,9 +25,6 @@ export const Wrap = styled.div`
     font-weight: 400;
     letter-spacing: 4px;
     margin-bottom: 40px;
-    transition: opacity var(--transitionSpeed) ease;
-    opacity: 0;
-    visibility: hidden;
   }
 `;
 
@@ -46,7 +36,7 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 1.5rem;
   ${mq.medium`
-    padding: 2.5rem 0;
+    padding: 2.5rem 1.5rem;
   `};
 `;
 

@@ -54,10 +54,10 @@ class Header extends React.Component {
 
     // TODO: move nav items to cms
     const menuItems = [
-      { text: 'Mission', href: '/mission', selector: false },
+      { text: 'About', href: '/about', selector: false },
       { text: 'Leadership', href: '/', selector: '#leadership' },
       { text: 'Projects', href: '/', selector: '#projects' },
-      { text: 'News', href: '/', selector: '#news' },
+      // { text: 'News', href: '/', selector: '#news' },
       { text: 'Contact', href: '/', selector: '#contact' }
     ];
 
@@ -79,7 +79,7 @@ class Header extends React.Component {
                 <MenuItem
                   onClick={this._handleClick}
                   key={`item-${idx + 1}`}
-                  active={pathname === href && pathname === '/mission'}
+                  active={pathname === href && pathname === '/about'}
                 >
                   {this._renderMenuItem(text, href, selector)}
                 </MenuItem>
