@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { Wrap, Content } from './styles';
+import { HeroContainer, HeroContent, VideoContainer } from './styles';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
 
@@ -19,25 +19,44 @@ const Hero = ({
     bgImageSrc = url;
   }
 
+  const validVideoSource = url => {
+    return url && url.indexOf('.mp4') > -1;
+  };
+
   return (
-    <Wrap bg={bgImageSrc && `${bgImageSrc}?w=2000&fit=scale`}>
-      <Content homepage={homepage}>
+    <HeroContainer
+      bg={
+        !validVideoSource(videoUrl) &&
+        bgImageSrc &&
+        `${bgImageSrc}?w=2000&fit=scale`
+      }
+    >
+      <HeroContent homepage={homepage}>
         <Markdown source={content} />
         {showLearnMore &&
-          homepage !== false && (
+          homepage && (
             <Link href={learnMoreUrl}>
               <a className="cta">Learn More</a>
             </Link>
           )}
-      </Content>
-      {/* {videoUrl && (
-        <video id="video-background" autoPlay loop muted playsInline>
-          <source src={videoUrl} type="video/mp4" />
-        </video>
-      )} */}
+      </HeroContent>
+      {validVideoSource(videoUrl) && (
+        <VideoContainer>
+          <video
+            id="video-background"
+            poster={`${bgImageSrc}?w=2000&fit=scale`}
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src={videoUrl} type="video/mp4" />
+          </video>
+        </VideoContainer>
+      )}
       {showScrollArrow &&
         !homepage && <img className="arr-down" src="/static/arr-down.svg" />}
-    </Wrap>
+    </HeroContainer>
   );
 };
 

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { mq } from '../../styles';
 
-export const Wrap = styled.div`
+export const HeroContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,17 +21,36 @@ export const Wrap = styled.div`
     transform: translateX(-50%);
   }
 
+  /* & video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    transform: translate(-50%, -50%);
+
+    &::after {
+      padding-bottom: 56%;
+    }
+  } */
+`;
+
+export const VideoContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+
   & video {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
   }
 `;
 
-export const Content = styled.div`
+export const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
