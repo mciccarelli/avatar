@@ -21,16 +21,16 @@ export const Content = styled.div`
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 4px;
-    margin-bottom: 10px;
+    margin: 0 0 1rem;
   }
 
   & h3 {
     color: var(--accentColor);
-    font-size: 31px;
+    font-size: 1.9375rem;
     color: #9b9b9b;
     line-height: 1.16;
     font-weight: 200;
-    margin: 0 0 30px;
+    margin: 0 0 3rem;
     max-width: 700px;
   }
 

@@ -7,7 +7,7 @@ export const Wrap = styled.div`
   justify-content: center;
   position: relative;
   width: 100vw;
-  min-height: 45vh;
+  min-height: 100vh;
   background-image: url(${props => props.bg});
   background-repeat: no-repeat;
   background-position: center center;

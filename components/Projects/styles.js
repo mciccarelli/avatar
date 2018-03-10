@@ -24,7 +24,7 @@ export const Wrap = styled.div`
     font-size: 20px;
     font-weight: 400;
     letter-spacing: 4px;
-    margin-bottom: 40px;
+    margin: 0 0 3rem;
   }
 `;
 
@@ -54,9 +54,13 @@ export const Row = styled.div`
 `;
 
 export const Logo = styled.div`
-  max-width: 310px;
+  max-width: 100px;
   margin-bottom: 20px;
   z-index: 2;
+
+  ${mq.medium`
+    max-width: 310px;
+  `};
 
   &:last-of-type {
     margin-bottom: 0;
@@ -138,5 +142,6 @@ export const Modal = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
+    cursor: pointer;
   }
 `;
