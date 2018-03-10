@@ -2,29 +2,32 @@ import styled from 'styled-components';
 import { mq } from '../../styles';
 
 export const Wrap = styled.div`
-  min-height: 20vh;
+  min-height: 5vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 30px 15px;
+  justify-content: flex-start;
+  padding: 1.5rem;
+  ${mq.medium`
+    padding: 2.5rem 1.5rem;
+  `};
+
   p {
     color: #86888a;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 400;
     display: block;
 
     ${mq.medium`
-      margin: 0 20px;
+      margin: 0 15px;
       display: inline-block;
     `};
 
     &:first-of-type {
-      display: block;
-      text-align: center;
-      margin: 0;
+      margin: 0 5px 10px 0;
       & img {
         max-width: 130px;
-        margin: 0 auto 20px;
+        max-height: 10px;
+        transform: translateY(2px);
       }
     }
   }

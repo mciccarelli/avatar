@@ -4,16 +4,16 @@ import { mq } from '../../styles';
 export const Wrap = styled.div`
   width: 100%;
   background: #f8f8f8;
+  padding: 1.5rem;
+  ${mq.medium`
+    padding: 2.5rem 1.5rem;
+  `};
 `;
 
 export const Content = styled.div`
   width: 100%;
   max-width: var(--maxWidth);
   margin: 0 auto;
-  padding: 1.5rem;
-  ${mq.medium`
-    padding: 2.5rem 1.5rem;
-  `};
 
   & h4 {
     text-transform: uppercase;

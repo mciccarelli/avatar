@@ -23,7 +23,11 @@ const AboutPage = ({ contact, pageData, footer, pathname }) => {
       {modules &&
         modules.map(section => {
           const { fields, sys: { id } } = section;
-          return <Section key={id} {...fields} />;
+          const sectionProps = {
+            id,
+            ...fields
+          };
+          return <Section key={id} {...sectionProps} />;
         })}
       <Contact entry={contact} />
     </App>

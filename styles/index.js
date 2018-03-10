@@ -98,6 +98,7 @@ export default () => injectGlobal`
 
   .contain {
     margin: 0 auto;
+    width: 100%;
     max-width: var(--maxWidth);
   }
 
