@@ -8,9 +8,9 @@ export const Wrap = styled.div`
 export const Content = styled.div`
   max-width: var(--maxWidth);
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 1rem;
   ${mq.medium`
-    padding: 2.5rem 1.5rem;
+    padding: 2rem 1rem;
   `};
 
   & h4 {

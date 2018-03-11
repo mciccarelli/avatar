@@ -4,9 +4,9 @@ import { mq } from '../../styles';
 export const Wrap = styled.div`
   width: 100%;
   background: #f8f8f8;
-  padding: 1.5rem;
+  padding: 1rem;
   ${mq.medium`
-    padding: 2.5rem 1.5rem;
+    padding: 4rem 1rem;
   `};
 `;
 

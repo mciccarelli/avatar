@@ -13,9 +13,9 @@ export const SectionContainer = styled.section`
     props.backgroundPosition ? props.backgroundPosition : 'center center'};
   background-size: ${props =>
     props.backgroundSize ? props.backgroundSize : 'cover'};
-  padding: 1.5rem;
+  padding: 1rem;
   ${mq.medium`
-    padding: 2.5rem 1.5rem;
+    padding: 4rem 1rem;
   `};
   ${mq.large`
     min-height: 45vh;
