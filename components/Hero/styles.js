@@ -6,6 +6,7 @@ export const HeroContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
   width: 100vw;
   min-height: 100vh;
   background-image: url(${props => props.bg});
@@ -13,41 +14,29 @@ export const HeroContainer = styled.div`
   background-position: center center;
   background-size: cover;
   ${mq.medium`
-    min-height: ${props => (!props.bg ? '45vh' : '80vh')};
-  `} & .arr-down {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  /* & video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-height: 100%;
-    min-width: 100%;
-    transform: translate(-50%, -50%);
-
-    &::after {
-      padding-bottom: 56%;
-    }
-  } */
-`;
-
-export const VideoContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
+    min-height: ${props => (!props.bg ? '45vh' : '70vh')};
+  `};
 
   & video {
     position: absolute;
-    top: 0;
     left: 0;
-    height: 100%;
+    top: 0;
     width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
+    display: none;
+    ${mq.large`
+      display: block; 
+    `};
   }
+`;
+
+export const Arrow = styled.img`
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 export const HeroContent = styled.div`
@@ -64,6 +53,7 @@ export const HeroContent = styled.div`
     max-width: ${props => (!props.homepage ? '100%' : '595px')};
     margin-bottom: ${props => (!props.homepage ? '0' : '40px')};
   }
+
   & h2 {
     color: var(--accentColor);
     font-size: 25px;
@@ -88,4 +78,12 @@ export const HeroContent = styled.div`
       content: ' >';
     }
   }
+  ${props =>
+    props.overlay &&
+    css`
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      transform: translateY(-50%);
+    `};
 `;
