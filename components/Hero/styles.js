@@ -14,7 +14,7 @@ export const HeroContainer = styled.div`
   background-position: center center;
   background-size: cover;
   ${mq.medium`
-    min-height: ${props => (!props.bg ? '45vh' : '70vh')};
+    min-height: ${props => (!props.bg ? '45vh' : '80vh')};
   `};
 
   & video {

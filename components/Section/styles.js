@@ -13,11 +13,12 @@ export const SectionContainer = styled.section`
     props.backgroundPosition ? props.backgroundPosition : 'center center'};
   background-size: ${props =>
     props.backgroundSize ? props.backgroundSize : 'cover'};
-  padding: 1rem;
+  padding: 2rem 1rem;
   ${mq.medium`
     padding: 4rem 1rem;
   `};
   ${mq.large`
+    padding: 7rem 1rem;
     min-height: 45vh;
   `};
 

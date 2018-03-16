@@ -34,9 +34,9 @@ export const Container = styled.div`
   position: relative;
   flex: 1;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1rem;
   ${mq.medium`
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
   `};
 `;
 

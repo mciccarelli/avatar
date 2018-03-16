@@ -23,9 +23,9 @@ export const Wrap = styled.div`
   }
 
   & .contain {
-    padding: 1rem;
+    padding: 2rem 1rem;
     ${mq.medium`
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
     `};
   }
 
@@ -97,7 +97,7 @@ export const Avatar = styled.div`
   & img {
     max-width: ${avatarSize};
     margin-right: 20px;
-    opacity: ${props => (!props.isActive ? '0.9' : '1')};
+    opacity: ${props => (!props.isActive ? '0.2' : '1')};
   }
 
   & .arrow {

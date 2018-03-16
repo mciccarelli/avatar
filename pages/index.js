@@ -36,6 +36,7 @@ HomePage.getInitialProps = async ({ pathname = '/' }) => {
   });
   const people = await fetchEntriesForContentType({
     content_type: 'person',
+    order: 'sys.createdAt',
     limit: 5
   });
   const projects = await fetchEntriesForContentType({
