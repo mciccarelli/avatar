@@ -1,18 +1,43 @@
 import React from 'react';
 import _ from 'lodash';
-import { Wrap, Content } from './styles';
+import {
+  Arrow,
+  Overlay,
+  HeroContainer,
+  HeroContent,
+  VideoContainer
+} from './styles';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
+
+// check if video source is an .mp4
+const validVideoSource = url => url && url.indexOf('.mp4') > -1;
+
+// render video player in a 16x9 aspect ratio container
+const VideoBackground = ({ video, poster }) => {
+  return (
+    <video
+      poster={`${poster}?w=2000&fit=scale`}
+      autoPlay
+      loop
+      muted
+      playsInline
+    >
+      <source src={video} type="video/mp4" />
+    </video>
+  );
+};
 
 const Hero = ({
   backgroundImage,
   content,
+  homepage,
   learnMoreUrl,
   showLearnMore,
   showScrollArrow,
-  videoUrl,
-  homepage = false
+  videoUrl
 }) => {
+  const hasVideo = validVideoSource(videoUrl);
   let bgImageSrc = false;
   if (backgroundImage && !_.isEmpty(backgroundImage)) {
     const { fields: { file: { url } } } = backgroundImage;
@@ -20,24 +45,21 @@ const Hero = ({
   }
 
   return (
-    <Wrap bg={bgImageSrc && `${bgImageSrc}?w=2000&fit=scale`}>
-      <Content homepage={homepage}>
+    <HeroContainer
+      bg={bgImageSrc && `${bgImageSrc}?w=2000&fit=scale`}
+      video={hasVideo}
+    >
+      <HeroContent homepage={homepage} overlay={hasVideo}>
         <Markdown source={content} />
-        {showLearnMore &&
-          homepage !== false && (
-            <Link href={learnMoreUrl}>
-              <a className="cta">Learn More</a>
-            </Link>
-          )}
-      </Content>
-      {/* {videoUrl && (
-        <video id="video-background" autoPlay loop muted playsInline>
-          <source src={videoUrl} type="video/mp4" />
-        </video>
-      )} */}
-      {showScrollArrow &&
-        !homepage && <img className="arr-down" src="/static/arr-down.svg" />}
-    </Wrap>
+        {showLearnMore && (
+          <Link href={learnMoreUrl}>
+            <a className="cta">Learn More</a>
+          </Link>
+        )}
+      </HeroContent>
+      {hasVideo && <VideoBackground video={videoUrl} poster={bgImageSrc} />}
+      {showScrollArrow && <Arrow src="/static/arr-down.svg" />}
+    </HeroContainer>
   );
 };
 

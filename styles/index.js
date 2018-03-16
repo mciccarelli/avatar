@@ -102,6 +102,22 @@ export default () => injectGlobal`
     max-width: var(--maxWidth);
   }
 
+  .aspectratio {
+    position: relative;
+    width: 100%;
+    height: 0;
+    &--16x9 {
+      padding-bottom: 56.25%;
+    }
+    & > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   #nprogress .bar { background: var(--accentColor); }
   #nprogress .spinner { display: none; }
 `;

@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 import { mq } from '../../styles';
 
-export const Wrap = styled.div`
+export const HeroContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
   width: 100vw;
   min-height: 100vh;
   background-image: url(${props => props.bg});
@@ -13,25 +14,32 @@ export const Wrap = styled.div`
   background-position: center center;
   background-size: cover;
   ${mq.medium`
-    min-height: ${props => (!props.bg ? '45vh' : '80vh')};
-  `} & .arr-down {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+    min-height: ${props => (!props.bg ? '45vh' : '70vh')};
+  `};
 
   & video {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    object-fit: cover;
+    display: none;
+    ${mq.large`
+      display: block; 
+    `};
   }
 `;
 
-export const Content = styled.div`
+export const Arrow = styled.img`
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+export const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -45,6 +53,7 @@ export const Content = styled.div`
     max-width: ${props => (!props.homepage ? '100%' : '595px')};
     margin-bottom: ${props => (!props.homepage ? '0' : '40px')};
   }
+
   & h2 {
     color: var(--accentColor);
     font-size: 25px;
@@ -69,4 +78,12 @@ export const Content = styled.div`
       content: ' >';
     }
   }
+  ${props =>
+    props.overlay &&
+    css`
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      transform: translateY(-50%);
+    `};
 `;

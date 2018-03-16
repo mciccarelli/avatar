@@ -18,8 +18,7 @@ const HomePage = ({
   projects
 }) => (
   <App contact={contact} footer={footer} pathname={pathname}>
-    {heroFields &&
-      !_.isEmpty(heroFields) && <Hero homepage={true} {...heroFields} />}
+    {!_.isEmpty(heroFields) && <Hero homepage={true} {...heroFields} />}
     <Leadership items={people} />
     <Facts items={facts} />
     <Projects items={projects} />
