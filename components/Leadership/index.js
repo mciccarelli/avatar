@@ -21,7 +21,6 @@ export default class Leadership extends React.Component {
       !_.isEmpty(activeProfile) && activeProfile.sys.id === profile.sys.id;
     this.setState({ activeProfile: !reset ? profile : {} });
   }
-
   render() {
     const { items } = this.props;
     const { activeProfile, fillBg } = this.state;

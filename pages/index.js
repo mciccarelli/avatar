@@ -20,7 +20,7 @@ const HomePage = ({
   <App contact={contact} footer={footer} pathname={pathname}>
     {!_.isEmpty(heroFields) && <Hero homepage={true} {...heroFields} />}
     <Leadership items={people} />
-    <Facts items={facts} />
+    {/* <Facts items={facts} /> */}
     <Projects items={projects} />
     <Contact entry={contact} />
   </App>

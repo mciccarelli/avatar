@@ -9,6 +9,7 @@ export const Wrap = styled.div`
   min-height: 60vh;
   position: relative;
   z-index: 1;
+  overflow: hidden;
   &:after {
     position: absolute;
     top: 0;
@@ -20,6 +21,12 @@ export const Wrap = styled.div`
     background-image: url('/static/leadership-bg.png');
     background-repeat: no-repeat;
     background-position: center right;
+    background-size: contain;
+    transform: translateX(30px);
+    ${mq.medium`
+      background-size: inherit;
+      transform: translateX(0);
+    `};
   }
 
   & .contain {
@@ -50,9 +57,11 @@ export const Container = styled.div`
   flex-direction: column;
   z-index: 2;
   background: ${props =>
-    !props.filled ? 'none' : 'rgba(255, 255, 255, 0.85)'};
+    !props.filled ? 'none' : 'rgb(255, 255, 255)'};
 
   ${mq.medium`
+    background: ${props =>
+      !props.filled ? 'none' : 'rgba(255, 255, 255, 0.85)'};
     margin-left: 2.5rem;
   `};
 `;

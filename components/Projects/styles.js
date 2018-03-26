@@ -140,8 +140,8 @@ export const Modal = styled.div`
 
   & img {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     cursor: pointer;
   }
 `;
