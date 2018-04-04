@@ -27,18 +27,24 @@ class Header extends React.Component {
       setTimeout(() => {
         if (scrollToElement && !_.isEmpty(scrollToElement)) {
           // scroll to section
-          scrollToElement.scrollIntoView({ behavior: 'smooth' });
+          scrollToElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
       }, 200);
     });
   };
   _renderMenuItem = (text, href, selector) => {
-    const { pathname } = this.props;
+    const { pathname, toggleLearnMore } = this.props;
     if (selector) {
       // smooth scroll to section on homepage
       return (
         <span onClick={e => this._handleRoute(e, href, selector)}>{text}</span>
       );
+    } else if (text === 'About') {
+      // hack to toggle learn more accordion from about link
+      return <span onClick={() => toggleLearnMore()}>{text}</span>;
     } else {
       // normal route
       return (
@@ -54,7 +60,7 @@ class Header extends React.Component {
 
     // TODO: move nav items to cms
     const menuItems = [
-      { text: 'About', href: '/about', selector: false },
+      { text: 'About', href: '/', selector: false },
       { text: 'Leadership', href: '/', selector: '#leadership' },
       { text: 'Projects', href: '/', selector: '#projects' },
       // { text: 'News', href: '/', selector: '#news' },

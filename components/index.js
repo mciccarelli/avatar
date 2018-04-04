@@ -1,3 +1,4 @@
+export { default as Accordion } from './Accordion';
 export { default as App } from './App';
 export { default as Contact } from './Contact';
 export { default as Facts } from './Facts';

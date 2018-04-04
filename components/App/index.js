@@ -19,6 +19,7 @@ class App extends Component {
       children,
       footer,
       pathname,
+      toggleLearnMore,
       title = 'Avatar Companies'
     } = this.props;
     return (
@@ -26,7 +27,7 @@ class App extends Component {
         <Head>
           <title>{title}</title>
         </Head>
-        <Header pathname={pathname} />
+        <Header pathname={pathname} toggleLearnMore={toggleLearnMore} />
         <main>{children}</main>
         <Footer entry={footer} />
       </Wrap>

@@ -56,8 +56,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 2;
-  background: ${props =>
-    !props.filled ? 'none' : 'rgb(255, 255, 255)'};
+  background: ${props => (!props.filled ? 'none' : 'rgb(255, 255, 255)')};
 
   ${mq.medium`
     background: ${props =>

@@ -35,6 +35,7 @@ const Hero = ({
   learnMoreUrl,
   showLearnMore,
   showScrollArrow,
+  toggleLearnMore,
   videoUrl
 }) => {
   const hasVideo = validVideoSource(videoUrl);
@@ -52,9 +53,9 @@ const Hero = ({
       <HeroContent homepage={homepage} overlay={hasVideo}>
         <Markdown source={content} />
         {showLearnMore && (
-          <Link href={learnMoreUrl}>
-            <a className="cta">Learn More</a>
-          </Link>
+          <a onClick={toggleLearnMore} className="cta">
+            Learn More
+          </a>
         )}
       </HeroContent>
       {hasVideo && <VideoBackground video={videoUrl} poster={bgImageSrc} />}

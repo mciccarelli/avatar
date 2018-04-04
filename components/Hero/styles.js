@@ -70,6 +70,8 @@ export const HeroContent = styled.div`
     font-size: 20px;
     font-weight: 400;
     text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
 
     &::before {
       content: '< ';
