@@ -18,6 +18,7 @@ class App extends Component {
     const {
       children,
       footer,
+      navItems,
       pathname,
       toggleLearnMore,
       title = 'Avatar Companies'
@@ -27,7 +28,11 @@ class App extends Component {
         <Head>
           <title>{title}</title>
         </Head>
-        <Header pathname={pathname} toggleLearnMore={toggleLearnMore} />
+        <Header
+          pathname={pathname}
+          toggleLearnMore={toggleLearnMore}
+          navItems={navItems}
+        />
         <main>{children}</main>
         <Footer entry={footer} />
       </Wrap>

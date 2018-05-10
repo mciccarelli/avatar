@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { mq } from '../../styles';
 
 const avatarSize = '113px';
@@ -18,11 +18,17 @@ export const Wrap = styled.div`
     width: 100%;
     height: 100%;
     content: ' ';
-    background-image: url('/static/leadership-bg.png');
-    background-repeat: no-repeat;
-    background-position: center right;
-    background-size: contain;
     transform: translateX(30px);
+    background-position: ${props =>
+      props.backgroundPosition ? props.backgroundPosition : 'center right'};
+    background-size: ${props =>
+      props.backgroundSize ? props.backgroundSize : 'contain'};
+    background-image: url(${props =>
+      props.backgroundImage
+        ? props.backgroundImage
+        : '/static/leadership-bg.png'});
+    background-repeat: no-repeat;
+    
     ${mq.medium`
       background-size: inherit;
       transform: translateX(0);
@@ -51,6 +57,7 @@ export const Wrap = styled.div`
 
 export const Container = styled.div`
   max-width: 590px;
+  min-height: ${props => (props.filled ? '290px' : 'none')};
   position: relative;
   transition: background 0.22s ease-in-out;
   display: flex;
@@ -105,7 +112,6 @@ export const Avatar = styled.div`
   & img {
     max-width: ${avatarSize};
     margin-right: 20px;
-    opacity: ${props => (!props.isActive ? '0.2' : '1')};
   }
 
   & .arrow {

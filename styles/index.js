@@ -60,6 +60,7 @@ export default () => injectGlobal`
 
   html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
   }
 
   *, *:before, *:after {

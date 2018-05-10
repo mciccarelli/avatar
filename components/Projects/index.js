@@ -17,10 +17,29 @@ export default class Projects extends React.Component {
     }
   }
   render() {
-    const { items } = this.props;
+    const {
+      items,
+      backgroundImage,
+      backgroundPosition,
+      backgroundSize
+    } = this.props;
     const { activeProject, showModal } = this.state;
+    let imageSrc = false;
+    if (backgroundImage && !_.isEmpty(backgroundImage)) {
+      const {
+        fields: {
+          file: { url: bgImageSrc }
+        }
+      } = backgroundImage;
+      imageSrc = bgImageSrc;
+    }
     return (
-      <Wrap id="projects">
+      <Wrap
+        id="projects"
+        backgroundImage={imageSrc}
+        backgroundPosition={backgroundPosition}
+        backgroundSize={backgroundSize}
+      >
         <Container>
           <h4>Projects</h4>
           <Row centered={!showModal}>

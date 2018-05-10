@@ -19,9 +19,11 @@ class Header extends React.Component {
     // close menu
     this.setState({ open: false });
   };
-  _handleRoute = (e, pathname, selector) => {
+  _handleRoute = (e, name) => {
     e.preventDefault();
-    Router.push(pathname).then(() => {
+    // route to homepage
+    Router.push('/').then(() => {
+      const selector = `#${name}`;
       const scrollToElement = document.querySelector(selector);
       // .2s delay
       setTimeout(() => {
@@ -35,37 +37,18 @@ class Header extends React.Component {
       }, 200);
     });
   };
-  _renderMenuItem = (text, href, selector) => {
+  _renderMenuItem = item => {
     const { pathname, toggleLearnMore } = this.props;
-    if (selector) {
-      // smooth scroll to section on homepage
-      return (
-        <span onClick={e => this._handleRoute(e, href, selector)}>{text}</span>
-      );
-    } else if (text === 'About') {
+    if (item === 'about') {
       // hack to toggle learn more accordion from about link
-      return <span onClick={() => toggleLearnMore()}>{text}</span>;
+      return <span onClick={() => toggleLearnMore()}>{item}</span>;
     } else {
-      // normal route
-      return (
-        <Link href={href} prefetch>
-          <a>{text}</a>
-        </Link>
-      );
+      return <span onClick={e => this._handleRoute(e, item)}>{item}</span>;
     }
   };
   render() {
-    const { pathname } = this.props;
+    const { navItems, pathname } = this.props;
     const { open } = this.state;
-
-    // TODO: move nav items to cms
-    const menuItems = [
-      { text: 'About', href: '/', selector: false },
-      { text: 'Leadership', href: '/', selector: '#leadership' },
-      { text: 'Projects', href: '/', selector: '#projects' },
-      // { text: 'News', href: '/', selector: '#news' },
-      { text: 'Contact', href: '/', selector: '#contact' }
-    ];
 
     return (
       <NavContainer>
@@ -78,16 +61,11 @@ class Header extends React.Component {
         </Logo>
         <Hamburger onClick={this._toggleMenu} src="../static/i-menu.svg" />
         <Menu className={open ? 'open' : ''}>
-          {menuItems &&
-            menuItems.map((item, idx) => {
-              const { text, href, selector } = item;
+          {navItems &&
+            navItems.map((item, idx) => {
               return (
-                <MenuItem
-                  onClick={this._handleClick}
-                  key={`item-${idx + 1}`}
-                  active={pathname === href && pathname === '/about'}
-                >
-                  {this._renderMenuItem(text, href, selector)}
+                <MenuItem onClick={this._handleClick} key={`item-${idx + 1}`}>
+                  {this._renderMenuItem(item)}
                 </MenuItem>
               );
             })}

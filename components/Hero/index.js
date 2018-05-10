@@ -1,5 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
+import Link from 'next/link';
+import { getImageSrc, validVideoSource } from '../../utils';
+import Markdown from 'react-markdown';
 import {
   Arrow,
   Overlay,
@@ -7,11 +10,6 @@ import {
   HeroContent,
   VideoContainer
 } from './styles';
-import Link from 'next/link';
-import Markdown from 'react-markdown';
-
-// check if video source is an .mp4
-const validVideoSource = url => url && url.indexOf('.mp4') > -1;
 
 // render video player in a 16x9 aspect ratio container
 const VideoBackground = ({ video, poster }) => {
@@ -31,26 +29,18 @@ const VideoBackground = ({ video, poster }) => {
 const Hero = ({
   backgroundImage,
   content,
-  homepage,
-  learnMoreUrl,
   showLearnMore,
-  showScrollArrow,
   toggleLearnMore,
   videoUrl
 }) => {
   const hasVideo = validVideoSource(videoUrl);
-  let bgImageSrc = false;
-  if (backgroundImage && !_.isEmpty(backgroundImage)) {
-    const { fields: { file: { url } } } = backgroundImage;
-    bgImageSrc = url;
-  }
-
+  const bgImageSrc = getImageSrc(backgroundImage);
   return (
     <HeroContainer
-      bg={bgImageSrc && `${bgImageSrc}?w=2000&fit=scale`}
+      bg={!_.isEmpty(bgImageSrc) && `${bgImageSrc}?w=2000&fit=scale`}
       video={hasVideo}
     >
-      <HeroContent homepage={homepage} overlay={hasVideo}>
+      <HeroContent overlay={hasVideo}>
         <Markdown source={content} />
         {showLearnMore && (
           <a onClick={toggleLearnMore} className="cta">
@@ -59,7 +49,6 @@ const Hero = ({
         )}
       </HeroContent>
       {hasVideo && <VideoBackground video={videoUrl} poster={bgImageSrc} />}
-      {showScrollArrow && <Arrow src="/static/arr-down.svg" />}
     </HeroContainer>
   );
 };

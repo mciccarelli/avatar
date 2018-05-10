@@ -1,13 +1,18 @@
-import * as React from 'react';
+import React from 'react';
 import _ from 'lodash';
-import { SectionContainer, SectionContent } from './styles';
 import Link from 'next/link';
 import Markdown from 'react-markdown';
-
-// Contentful Entity IDS
-const INTRO_SECTION_ID = '4CSI4rV5PaYOS4M2o8KKao';
-const MISSION_SECTION_ID = 'Qx3mHdoYIUUUOI42scESe';
-const OPERATING_PRINCIPLES_ID = '1A9Rkots0AmoYUKqGOiI6y';
+import { getImageSrc } from '../../utils';
+import { Leadership, Projects, Contact } from '../../components';
+import { SectionContainer, SectionContent } from './styles';
+import {
+  INTRO_ENTRY_ID,
+  JOIN_US_ENTRY_ID,
+  LEADERSHIP_ENTRY_ID,
+  MISSION_ENTRY_ID,
+  OPERATING_PRINCIPLES_ENTRY_ID,
+  PROJECTS_ENTRY_ID
+} from '../../constants';
 
 const Section = ({
   id,
@@ -18,26 +23,21 @@ const Section = ({
   content,
   useCustomListStyle
 }) => {
-  let imageSrc = false;
-  if (backgroundImage && !_.isEmpty(backgroundImage)) {
-    const { fields: { file: { url: bgImageSrc } } } = backgroundImage;
-    imageSrc = bgImageSrc;
-  }
-
+  const bgImageSrc = getImageSrc(backgroundImage);
   return (
     <SectionContainer
-      backgroundImage={imageSrc}
+      backgroundImage={bgImageSrc}
       backgroundPosition={backgroundPosition}
       backgroundSize={backgroundSize}
       backgroundColor={backgroundColor}
     >
       <SectionContent
-        intro={id === INTRO_SECTION_ID}
-        mission={id === MISSION_SECTION_ID}
-        principles={id === OPERATING_PRINCIPLES_ID}
+        intro={id === INTRO_ENTRY_ID}
+        mission={id === MISSION_ENTRY_ID}
+        principles={id === OPERATING_PRINCIPLES_ENTRY_ID}
         useCustomListStyle={useCustomListStyle}
       >
-        <Markdown source={content} />
+        {content && <Markdown source={content} />}
       </SectionContent>
     </SectionContainer>
   );

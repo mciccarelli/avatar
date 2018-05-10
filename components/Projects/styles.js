@@ -12,11 +12,15 @@ const centerLogos = keyframes`
 `;
 
 export const Wrap = styled.div`
-  background-image: url('/static/projects-bg.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
   min-height: 60vh;
   display: flex;
+  background-position: ${props =>
+    props.backgroundPosition ? props.backgroundPosition : 'center center'};
+  background-size: ${props =>
+    props.backgroundSize ? props.backgroundSize : 'cover'};
+  background-image: url(${props =>
+    props.backgroundImage ? props.backgroundImage : '/static/projects-bg.jpg'});
+  background-repeat: no-repeat;
 
   & h4 {
     text-transform: uppercase;

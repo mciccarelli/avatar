@@ -22,10 +22,29 @@ export default class Leadership extends React.Component {
     this.setState({ activeProfile: !reset ? profile : {} });
   }
   render() {
-    const { items } = this.props;
+    const {
+      items,
+      backgroundImage,
+      backgroundPosition,
+      backgroundSize
+    } = this.props;
     const { activeProfile, fillBg } = this.state;
+    let imageSrc = false;
+    if (backgroundImage && !_.isEmpty(backgroundImage)) {
+      const {
+        fields: {
+          file: { url: bgImageSrc }
+        }
+      } = backgroundImage;
+      imageSrc = bgImageSrc;
+    }
     return (
-      <Wrap id="leadership">
+      <Wrap
+        id="leadership"
+        backgroundImage={imageSrc}
+        backgroundPosition={backgroundPosition}
+        backgroundSize={backgroundSize}
+      >
         <div className="contain">
           <h4>Leadership</h4>
           <Container

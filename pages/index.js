@@ -17,19 +17,24 @@ import {
   fetchEntriesForContentType,
   fetchEntriesByType
 } from '../api';
+import {
+  LEADERSHIP_ENTRY_ID,
+  PROJECTS_ENTRY_ID,
+  JOIN_US_ENTRY_ID
+} from '../constants';
+
+import { getFields } from '../utils';
 
 export default class HomePage extends React.Component {
   static async getInitialProps({ pathname = '/' }) {
-    const aboutPageContent = await fetchEntriesForContentType({
+    // NOTE: using snake case to flag raw contentful data responses
+    const hp_container = await fetchEntriesForContentType({
       content_type: 'pageContainer',
-      ['sys.id']: '6EBHVuTglyWckAk6yce4Q0' // filter 'about' pageContainer only
+      ['sys.id']: '1y2FncyiEgMy2a4Y4iM8eW' // filter 'Home Page' only
     });
-    const contact = await fetchEntryById('6jLNWdukXSisiIwEq6cEQs');
-    const facts = await fetchEntriesForContentType({ content_type: 'fact' });
-    const footer = await fetchEntryById('6G4U286BvaieYuWc4S0i2W');
-    const hero = await fetchEntriesForContentType({
-      content_type: 'hero',
-      ['sys.id']: '22WQgsUiA48Q8eIKaWMaU8' // filter 'homepage' hero only
+    const lm_container = await fetchEntriesForContentType({
+      content_type: 'pageContainer',
+      ['sys.id']: '6EBHVuTglyWckAk6yce4Q0' // filter 'Learn More' only
     });
     const people = await fetchEntriesForContentType({
       content_type: 'person',
@@ -40,15 +45,15 @@ export default class HomePage extends React.Component {
       content_type: 'project',
       limit: 5
     });
+    // const facts = await fetchEntriesForContentType({ content_type: 'fact' });
+    const footer_entry = await fetchEntryById('6G4U286BvaieYuWc4S0i2W');
 
     return {
-      contact,
-      facts,
-      footer,
-      hero: _.isArray(hero) ? hero[0] : {},
+      hpContainer: hp_container.pop(),
+      lmContainer: lm_container.pop(),
+      footerEntry: footer_entry,
       pathname,
       people,
-      learnMoreContent: aboutPageContent[0],
       projects
     };
   }
@@ -64,10 +69,30 @@ export default class HomePage extends React.Component {
   componentDidMount() {
     this._calcHeight();
   }
+  get heroFields() {
+    return getFields(this.props.hpContainer.fields.hero);
+  }
+  get lmSections() {
+    return this.props.lmContainer.fields.sections;
+  }
+  get hpSections() {
+    return this.props.hpContainer.fields.sections;
+  }
+  get navItems() {
+    let items = ['about'];
+    this.props.hpContainer.fields.sections.map(section => {
+      let n =
+        section.fields && section.fields.name
+          ? section.fields.name.toLowerCase()
+          : false;
+      if (n === 'join us') items.push('contact');
+      else if (n) items.push(n);
+    });
+    return items;
+  }
   _toggleLearnMore() {
     const { accordionOpen } = this.state;
     if (!accordionOpen) {
-      // const scrollToElement = ReactDOM.findDOMNode(this.accordionElement);
       const scrollToElement = document.querySelector('#accordion');
       // .2s delay
       setTimeout(() => {
@@ -84,7 +109,6 @@ export default class HomePage extends React.Component {
     this.setState({ accordionOpen: !accordionOpen });
   }
   _calcHeight() {
-    // const height = ReactDOM.findDOMNode(this.accordionElement).clientHeight;
     const height = document.querySelector('#accordion').clientHeight;
     if (height > 0) {
       this.setState({
@@ -94,30 +118,28 @@ export default class HomePage extends React.Component {
     }
   }
   render() {
-    const {
-      contact,
-      facts,
-      footer,
-      hero: { fields: heroFields },
-      pathname,
-      learnMoreContent,
-      people,
-      projects
-    } = this.props;
     const { accordionOpen, accordionHeight, accordionReady } = this.state;
-    const { fields: { modules } } = learnMoreContent;
+    const {
+      hpContainer,
+      lmContainer,
+      footerEntry,
+      pathname,
+      people,
+      projects,
+      contact
+    } = this.props;
+
     return (
       <App
-        contact={contact}
-        footer={footer}
         pathname={pathname}
+        navItems={this.navItems}
+        footer={footerEntry}
         toggleLearnMore={() => this._toggleLearnMore()}
       >
-        {!_.isEmpty(heroFields) && (
+        {!_.isEmpty(this.heroFields) && (
           <Hero
-            homepage={true}
             toggleLearnMore={() => this._toggleLearnMore()}
-            {...heroFields}
+            {...this.heroFields}
           />
         )}
         <Accordion
@@ -126,20 +148,34 @@ export default class HomePage extends React.Component {
           open={accordionOpen}
           ready={accordionReady}
         >
-          {modules &&
-            modules.map(section => {
-              const { fields, sys: { id } } = section;
-              const sectionProps = {
-                id,
-                ...fields
-              };
-              return <Section key={id} {...sectionProps} />;
-            })}
+          {this.lmSections.map(section => {
+            const {
+              fields,
+              sys: { id }
+            } = section;
+            const sectionProps = {
+              id,
+              ...fields
+            };
+            return <Section key={id} {...sectionProps} />;
+          })}
         </Accordion>
-        <Leadership items={people} />
-        {/* <Facts items={facts} /> */}
-        <Projects items={projects} />
-        <Contact entry={contact} />
+        {this.hpSections.map(section => {
+          const {
+            fields,
+            sys: { id }
+          } = section;
+          const sectionProps = {
+            id,
+            ...fields
+          };
+
+          if (id === LEADERSHIP_ENTRY_ID)
+            return <Leadership items={people} {...sectionProps} />;
+          if (id === PROJECTS_ENTRY_ID)
+            return <Projects items={projects} {...sectionProps} />;
+          if (id === JOIN_US_ENTRY_ID) return <Contact entry={section} />;
+        })}
       </App>
     );
   }

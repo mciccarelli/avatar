@@ -50,8 +50,8 @@ export const HeroContent = styled.div`
 
   > div {
     text-align: left;
-    max-width: ${props => (!props.homepage ? '100%' : '595px')};
-    margin-bottom: ${props => (!props.homepage ? '0' : '40px')};
+    max-width: 920px;
+    margin-bottom: 40px;
   }
 
   & h2 {
