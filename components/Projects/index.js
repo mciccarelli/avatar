@@ -35,13 +35,13 @@ export default class Projects extends React.Component {
     }
     return (
       <Wrap
-        id="projects"
+        id="portfolio"
         backgroundImage={imageSrc}
         backgroundPosition={backgroundPosition}
         backgroundSize={backgroundSize}
       >
         <Container>
-          <h4>Projects</h4>
+          <h4>Portfolio</h4>
           <Row centered={!showModal}>
             {items &&
               items.map((item, idx) => {

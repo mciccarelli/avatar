@@ -19,12 +19,11 @@ export const SectionContainer = styled.section`
   `};
   ${mq.large`
     padding: 7rem 1rem;
-    min-height: 45vh;
+    min-height: 80vh;
   `};
 
   &:first-of-type {
     background-image: linear-gradient(-149deg, #d8d8d8 15%, #bebebe 100%);
-    /*background-image: linear-gradient(-149deg, #bebebe 15%, #d8d8d8 100%);*/
   }
 
   ${props =>
@@ -53,22 +52,13 @@ export const SectionContent = styled.div`
 
   & h3,
   & h2,
+  & h1,
   & p {
     max-width: 550px;
     margin: 0 0 2rem;
   }
 
-  & h3 {
-    font-size: 1.25rem;
-    line-height: 1.15;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.2469rem;
-    margin-bottom: 1rem;
-    color: ${props => (props.intro ? '#ffffff' : 'var(--accentColor)')};
-  }
-
-  & h2 {
+  & h1 {
     color: ${props => (props.mission || props.intro ? '#ffffff' : '#9B9B9B')};
     font-size: 25px;
     line-height: 1.15;
@@ -82,6 +72,24 @@ export const SectionContent = styled.div`
     `};
   }
 
+  h2 {
+    color: var(--accentColor);
+    font-size: 1.75rem;
+    font-weight: 200;
+    letter-spacing: 0.04em;
+    margin-bottom: 3rem;
+  }
+
+  & h3 {
+    font-size: 1.25rem;
+    line-height: 1.15;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2469rem;
+    margin-bottom: 1rem;
+    color: ${props => (props.intro ? '#ffffff' : 'var(--accentColor)')};
+  }
+
   & p {
     color: ${props => (props.mission ? '#ffffff' : '#231f20')};
     font-size: 20px;
@@ -92,38 +100,33 @@ export const SectionContent = styled.div`
 
   & ul {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding: 0;
+    margin-top: 2rem;
 
     & li {
-      font-size: 0.8125rem;
+      font-size: 1.25rem;
       font-weight: 200;
-      letter-spacing: 0.03em;
-      line-height: 1;
+      line-height: 1.2;
       color: #231f20;
       box-sizing: border-box;
-      margin-bottom: 10px;
+      margin: 0 0 1rem;
       ${props =>
         props.useCustomListStyle &&
         css`
           position: relative;
-          margin-bottom: 30px;
           padding-left: 23px;
           &::before {
             background-image: url('/static/i-li.svg');
             background-size: 11px 10px;
             position: absolute;
             content: '';
-            top: 0;
+            top: 50%;
+            transform: translateY(-65%);
             left: 0;
             width: 11px;
             height: 10px;
           }
-
-          ${mq.medium`
-            width: 50%;
-          `};
         `};
     }
   }
@@ -141,36 +144,26 @@ export const SectionContent = styled.div`
           width: 82px;
         }
       }
+      h1,
       h2,
       h3 {
         max-width: 620px;
       }
-      h2 {
+      h1 {
         margin-bottom: 0.625rem;
       }
-      h3 {
-        &:first-of-type {
-          text-transform: none;
-          color: var(--accentColor);
-          font-size: 1.75rem;
-          font-weight: 200;
-          letter-spacing: 0.04em;
-          margin-bottom: 3rem;
-        }
+      h2 {
+        margin-bottom: 2rem;
       }
     `};
 
   ${props =>
     props.principles &&
     css`
+      h1,
       h2 {
         margin-bottom: 1rem;
-      }
-      h3:last-of-type {
-        margin-bottom: 3rem;
-      }
-      p:first-of-type {
-        max-width: 400px;
+        max-width: 800px;
       }
     `};
 `;
