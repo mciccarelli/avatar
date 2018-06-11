@@ -18,20 +18,22 @@ export const Wrap = styled.div`
     width: 100%;
     height: 100%;
     content: ' ';
-    transform: translateX(30px);
+    transform: translateX(30px) scale(1.25);
+    transform-origin: center left;
     background-position: ${props =>
       props.backgroundPosition ? props.backgroundPosition : 'center right'};
-    background-size: ${props =>
-      props.backgroundSize ? props.backgroundSize : 'contain'};
     background-image: url(${props =>
       props.backgroundImage
         ? props.backgroundImage
         : '/static/leadership-bg.png'});
+    background-size: ${props =>
+      props.backgroundSize ? props.backgroundSize : 'contain'};
     background-repeat: no-repeat;
-    
+
     ${mq.medium`
       background-size: inherit;
       transform: translateX(0);
+
     `};
   }
 

@@ -58,7 +58,7 @@ export const Row = styled.div`
 `;
 
 export const Logo = styled.div`
-  max-width: 100px;
+  max-width: 200px;
   margin-bottom: 20px;
   z-index: 2;
 
