@@ -5,12 +5,10 @@ export const Wrap = styled.div`
   width: 100%;
   background: #f8f8f8;
   padding: 2rem 1rem;
-  ${mq.medium`
-    padding: 4rem 1rem;
-  `};
-  ${mq.large`
-    padding: 7rem 1rem;
-  `};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 `;
 
 export const Content = styled.div`

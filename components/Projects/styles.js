@@ -12,8 +12,8 @@ const centerLogos = keyframes`
 `;
 
 export const Wrap = styled.div`
-  min-height: 80vh;
   display: flex;
+  min-height: 100vh;
   background-position: ${props =>
     props.backgroundPosition ? props.backgroundPosition : 'center center'};
   background-size: ${props =>

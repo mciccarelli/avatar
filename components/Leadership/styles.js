@@ -6,7 +6,7 @@ const avatarSize = '113px';
 
 export const Wrap = styled.div`
   background-image: linear-gradient(-149deg, #d8d8d8 15%, #ffffff 100%);
-  min-height: 80vh;
+  min-height: 100vh;
   position: relative;
   z-index: 1;
   overflow: hidden;

@@ -4,8 +4,11 @@ import { mq } from '../../styles';
 export const SectionContainer = styled.section`
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   width: 100vw;
+  min-height: 100vh;
+  padding: 2rem 1rem;
   background-image: linear-gradient(-149deg, #d8d8d8 15%, #ffffff 100%);
   background-color: ${props =>
     props.backgroundColor ? props.backgroundColor : 'transparent'};
@@ -13,14 +16,6 @@ export const SectionContainer = styled.section`
     props.backgroundPosition ? props.backgroundPosition : 'center center'};
   background-size: ${props =>
     props.backgroundSize ? props.backgroundSize : 'cover'};
-  padding: 2rem 1rem;
-  ${mq.medium`
-    padding: 4rem 1rem;
-  `};
-  ${mq.large`
-    padding: 7rem 1rem;
-    min-height: 80vh;
-  `};
 
   &:first-of-type {
     background-image: linear-gradient(-149deg, #d8d8d8 15%, #bebebe 100%);
