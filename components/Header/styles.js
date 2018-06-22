@@ -20,7 +20,7 @@ export const NavContainer = styled.div`
 
 export const Logo = styled.div`
   & img {
-    width: 100px;
+    width: 125px;
     height: auto;
   }
 `;
