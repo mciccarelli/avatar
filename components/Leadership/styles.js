@@ -18,29 +18,24 @@ export const Wrap = styled.div`
     width: 100%;
     height: 100%;
     content: ' ';
-    transform: translateX(30px) scale(1.25);
-    transform-origin: center left;
-    background-position: ${props =>
-      props.backgroundPosition ? props.backgroundPosition : 'center right'};
-    background-image: url(${props =>
-      props.backgroundImage
-        ? props.backgroundImage
-        : '/static/leadership-bg.png'});
-    background-size: ${props =>
-      props.backgroundSize ? props.backgroundSize : 'contain'};
-    background-repeat: no-repeat;
 
     ${mq.medium`
-      background-size: inherit;
-      transform: translateX(0);
-
+      background-position: ${props =>
+        props.backgroundPosition ? props.backgroundPosition : 'center right'};
+      background-image: url(${props =>
+        props.backgroundImage
+          ? props.backgroundImage
+          : '/static/leadership-bg.png'});
+      background-size: ${props =>
+        props.backgroundSize ? props.backgroundSize : 'cover'};
+      background-repeat: no-repeat;
     `};
   }
 
   & .contain {
     padding: 2rem 1rem;
     ${mq.medium`
-      padding: 3rem 1rem;
+      padding: 10rem 1rem;
     `};
   }
 
@@ -59,7 +54,7 @@ export const Wrap = styled.div`
 
 export const Container = styled.div`
   max-width: 590px;
-  min-height: ${props => (props.filled ? '290px' : 'none')};
+  min-height: ${props => (props.filled ? '350px' : 'none')};
   position: relative;
   transition: background 0.22s ease-in-out;
   display: flex;

@@ -54,7 +54,10 @@ export default () => injectGlobal`
     --lightGray: #DCDDDE;
     --baseFontFamily: 'Conduit', 'Trebuchet MS', Helvetica, sans-serif;
     --maxWidth: 1028px;
-    --headerHeight: 80px;
+    --headerHeightSm: 80px;
+    --headerHeightLg: 120px;
+    --logoHeightSm: 125px;
+    --logoHeightLg: 160px;
     --transitionSpeed: 0.10s;
   }
 

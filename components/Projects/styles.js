@@ -40,7 +40,7 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 2rem 1rem;
   ${mq.medium`
-    padding: 3rem 1rem;
+    padding: 10rem 1rem;
   `};
 `;
 

@@ -7,21 +7,26 @@ export const NavContainer = styled.div`
   left: 0;
   z-index: 100;
   width: 100%;
-  height: var(--headerHeight);
+  height: var(--headerHeightSm);
   display: flex;
   align-items: center;
   background: white;
   margin: 0 auto;
   padding: 0 1.5rem;
   ${mq.medium`
-    padding: 0 2.5rem;
+    padding: 1rem 2.5rem;
+    height: var(--headerHeightLg);
+    align-items: flex-end;
   `};
 `;
 
 export const Logo = styled.div`
   & img {
-    width: 125px;
+    width: var(--logoHeightSm);
     height: auto;
+    ${mq.medium`
+      width: var(--logoHeightLg);
+    `};
   }
 `;
 
@@ -62,6 +67,7 @@ export const Menu = styled.ul`
   ${mq.medium`
     margin: 0 0 0 auto;
     display: flex;
+    transform: translateY(-10px);
   `};
 `;
 
