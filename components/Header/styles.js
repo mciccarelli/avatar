@@ -67,7 +67,7 @@ export const Menu = styled.ul`
   ${mq.medium`
     margin: 0 0 0 auto;
     display: flex;
-    transform: translateY(-10px);
+    transform: translateY(-15px);
   `};
 `;
 
