@@ -77,6 +77,10 @@ export default () => injectGlobal`
     font-smoothing: antialiased;
     font: 1rem/1.5 var(--baseFontFamily);
     color: black;
+    padding-top: var(--headerHeightSm);
+    ${mq.medium`
+      padding-top: var(--headerHeightLg);
+    `}
   }
 
   p {
