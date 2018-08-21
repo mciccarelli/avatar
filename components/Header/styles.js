@@ -46,7 +46,7 @@ export const Menu = styled.ul`
 
   &.open {
     position: absolute;
-    top: var(--headerHeight);
+    top: var(--headerHeightSm);
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -56,7 +56,12 @@ export const Menu = styled.ul`
     align-items: center;
     z-index: -1;
     background: #fff;
-    transform: translateY(calc(0px - var(--headerHeight)));
+    transform: translateY(calc(0px - var(--headerHeightSm)));
+
+    ${mq.medium`
+      top: var(--headerHeightLg);
+      transform: translateY(calc(0px - var(--headerHeightLg)));
+    `};
 
     & a,
     & span {
