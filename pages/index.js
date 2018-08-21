@@ -1,31 +1,24 @@
-import React from 'react';
+import { Component } from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'lodash';
-import {
-  App,
-  Contact,
-  Hero,
-  Facts,
-  Leadership,
-  Accordion,
-  Projects,
-  Section
-} from '../components';
-import {
-  fetchAssetById,
-  fetchEntryById,
-  fetchEntriesForContentType,
-  fetchEntriesByType
-} from '../api';
+import { isEmpty } from 'lodash';
+import { fetchEntryById, fetchEntriesForContentType } from '../api';
+import { getFields } from '../utils';
 import {
   LEADERSHIP_ENTRY_ID,
   PROJECTS_ENTRY_ID,
   JOIN_US_ENTRY_ID
 } from '../constants';
+import {
+  App,
+  Contact,
+  Hero,
+  Leadership,
+  Accordion,
+  Projects,
+  Section
+} from '../components';
 
-import { getFields } from '../utils';
-
-export default class HomePage extends React.Component {
+export default class HomePage extends Component {
   static async getInitialProps({ pathname = '/' }) {
     // NOTE: using snake case to flag raw contentful data responses
     const hp_container = await fetchEntriesForContentType({
@@ -45,7 +38,6 @@ export default class HomePage extends React.Component {
       content_type: 'project',
       limit: 5
     });
-    // const facts = await fetchEntriesForContentType({ content_type: 'fact' });
     const footer_entry = await fetchEntryById('6G4U286BvaieYuWc4S0i2W');
 
     return {
@@ -61,13 +53,14 @@ export default class HomePage extends React.Component {
     super(props);
     this.state = {
       accordionOpen: false,
-      accordionHeight: 0,
       accordionReady: false
     };
     this._toggleLearnMore = this._toggleLearnMore.bind(this);
   }
   componentDidMount() {
-    this._calcHeight();
+    this.setState({
+      accordionReady: true
+    });
   }
   get heroFields() {
     return getFields(this.props.hpContainer.fields.hero);
@@ -93,10 +86,10 @@ export default class HomePage extends React.Component {
   _toggleLearnMore() {
     const { accordionOpen } = this.state;
     if (!accordionOpen) {
-      const scrollToElement = document.querySelector('#accordion');
+      const scrollToElement = document.getElementById('accordion');
       // .2s delay
       setTimeout(() => {
-        if (scrollToElement && !_.isEmpty(scrollToElement)) {
+        if (scrollToElement && !isEmpty(scrollToElement)) {
           // scroll to section
           scrollToElement.scrollIntoView({
             behavior: 'smooth',
@@ -108,26 +101,12 @@ export default class HomePage extends React.Component {
 
     this.setState({ accordionOpen: !accordionOpen });
   }
-  _calcHeight() {
-    const height = document.querySelector('#accordion').clientHeight;
-    if (height > 0) {
-      this.setState({
-        accordionHeight: height,
-        accordionReady: true
-      });
-    }
-  }
   render() {
     const { accordionOpen, accordionHeight, accordionReady } = this.state;
-    const {
-      hpContainer,
-      lmContainer,
-      footerEntry,
-      pathname,
-      people,
-      projects,
-      contact
-    } = this.props;
+    const { footerEntry, pathname, people, projects } = this.props;
+
+    if (!people || !projects || !this.lmSections || !this.hpSections)
+      return <p>sdsdsdsd</p>;
 
     return (
       <App
@@ -136,18 +115,13 @@ export default class HomePage extends React.Component {
         footer={footerEntry}
         toggleLearnMore={() => this._toggleLearnMore()}
       >
-        {!_.isEmpty(this.heroFields) && (
+        {!isEmpty(this.heroFields) && (
           <Hero
             toggleLearnMore={() => this._toggleLearnMore()}
             {...this.heroFields}
           />
         )}
-        <Accordion
-          ref={element => (this.accordionElement = element)}
-          height={accordionHeight}
-          open={accordionOpen}
-          ready={accordionReady}
-        >
+        <Accordion open={accordionOpen} ready={accordionReady}>
           {this.lmSections.map(section => {
             const {
               fields,
@@ -171,10 +145,11 @@ export default class HomePage extends React.Component {
           };
 
           if (id === LEADERSHIP_ENTRY_ID)
-            return <Leadership items={people} {...sectionProps} />;
+            return <Leadership key={id} items={people} {...sectionProps} />;
           if (id === PROJECTS_ENTRY_ID)
-            return <Projects items={projects} {...sectionProps} />;
-          if (id === JOIN_US_ENTRY_ID) return <Contact entry={section} />;
+            return <Projects key={id} items={projects} {...sectionProps} />;
+          if (id === JOIN_US_ENTRY_ID)
+            return <Contact key={id} entry={section} />;
         })}
       </App>
     );

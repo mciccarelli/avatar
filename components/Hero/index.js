@@ -1,7 +1,6 @@
 import React from 'react';
-import _ from 'lodash';
-import Link from 'next/link';
-import { getImageSrc, validVideoSource } from '../../utils';
+import { isEmpty } from 'lodash';
+import { getImageAttributes, validVideoSource } from '../../utils';
 import Markdown from 'react-markdown';
 import {
   Arrow,
@@ -34,10 +33,10 @@ const Hero = ({
   videoUrl
 }) => {
   const hasVideo = validVideoSource(videoUrl);
-  const bgImageSrc = getImageSrc(backgroundImage);
+  const bgImage = backgroundImage && getImageAttributes(backgroundImage);
   return (
     <HeroContainer
-      bg={!_.isEmpty(bgImageSrc) && `${bgImageSrc}?w=2000&fit=scale`}
+      bg={!isEmpty(bgImage) && `${bgImage.url}?w=2000&fit=scale`}
       video={hasVideo}
     >
       <HeroContent overlay={hasVideo}>
@@ -48,7 +47,12 @@ const Hero = ({
           </a>
         )}
       </HeroContent>
-      {hasVideo && <VideoBackground video={videoUrl} poster={bgImageSrc} />}
+      {hasVideo && (
+        <VideoBackground
+          video={videoUrl}
+          poster={bgImage && bgImage.url ? bgImage.url : ''}
+        />
+      )}
     </HeroContainer>
   );
 };
