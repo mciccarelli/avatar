@@ -31,6 +31,15 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
+      # Test the source code
+      - run:
+          name: Run Tests
+          command: npm run test
+      # Cache the build folders for the deploy job
+      - save_cache:
+          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - .next
 
   # The deploy job
   deploy:
