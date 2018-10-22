@@ -1,9 +1,11 @@
+import getConfig from 'next/config';
 const { createClient } = require('contentful');
+const { publicRuntimeConfig } = getConfig();
+const { contentfulSpaceId, contentfulAccessToken } = publicRuntimeConfig;
 
-// setup contentful client
 export const contentfulClient = createClient({
-  space: `${process.env.CONTENTFUL_SPACE_ID}`,
-  accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`
+  space: contentfulSpaceId,
+  accessToken: contentfulAccessToken
 });
 
 // get single entry by ID
@@ -37,7 +39,7 @@ export const fetchAllAssets = id => {
 };
 
 // get entries by content type
-export const fetchEntriesForContentType = (req) => {
+export const fetchEntriesForContentType = req => {
   return contentfulClient
     .getEntries(req)
     .then(response => response.items)
