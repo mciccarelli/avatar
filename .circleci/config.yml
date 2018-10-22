@@ -37,7 +37,7 @@ jobs:
           command: npm run test
       # Cache the build folders for the deploy job
       - save_cache:
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          key: v1-next-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
             - .next
 
@@ -50,7 +50,7 @@ jobs:
       - checkout
       # build folder that needs to be deployed
       - restore_cache:
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          key: v1-next-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
       # Add the dist folder in github repo
       - run:
           name: Commit folder
