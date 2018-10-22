@@ -5,8 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production next start",
-    "test": "echo 'no tests to run...'",
-    "deploy": "now && now alias && now rm avatar --safe --yes"
+    "test": "echo 'no tests to run...'"
   },
   "dependencies": {
     "babel-plugin-inline-dotenv": "^1.1.2",
