@@ -5,6 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production next start",
+    "test": "echo 'no tests to run...'",
     "deploy": "now && now alias && now rm avatar --safe --yes"
   },
   "dependencies": {
