@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 
 module.exports = {
   distDir: 'dist',
@@ -8,8 +8,8 @@ module.exports = {
   },
   publicRuntimeConfig: {
     // Will be available on both server and client
-    staticFolder: '/static',
-    contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
-    contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+    staticFolder: '/static'
+    // contentfulSpaceId: process.env.CONTENTFUL_SPACE_ID,
+    // contentfulAccessToken: process.env.CONTENTFUL_ACCESS_TOKEN
   }
 };

@@ -1,11 +1,12 @@
-import getConfig from 'next/config';
 const { createClient } = require('contentful');
-const { publicRuntimeConfig } = getConfig();
-const { contentfulSpaceId, contentfulAccessToken } = publicRuntimeConfig;
+// import getConfig from 'next/config';
+// const { publicRuntimeConfig } = getConfig();
+// const { contentfulSpaceId, contentfulAccessToken } = publicRuntimeConfig;
 
 export const contentfulClient = createClient({
   space: 'w2eolzxrklt3',
-  accessToken: 'b28067de98644aa290348dc8f434aad44582996cee17e23e86344745b03aaae0'
+  accessToken:
+    'b28067de98644aa290348dc8f434aad44582996cee17e23e86344745b03aaae0'
 });
 
 // get single entry by ID
