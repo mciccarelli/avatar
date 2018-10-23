@@ -5,14 +5,14 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/node:6.10-browsers
+      - image: circleci/node:8.11.4-browsers
     steps:
       # Checkout the code from the branch into the working_directory
       - checkout
       # Log the current branch
-      # - run:
-      #     name: Show current branch
-      #     command: echo ${CIRCLE_BRANCH}
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
       # Restore local dependencies from cache
       # - restore_cache:
       #     keys:
@@ -45,7 +45,7 @@ jobs:
   deploy:
     working_directory: ~/project
     docker:
-      - image: circleci/node:6.10-browsers
+      - image: circleci/node:8.11.4-browsers
     steps:
       # Install project dependencies
       - run:
