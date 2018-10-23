@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production next start",
+    "start": "NODE_ENV=production next -p 8081 start",
     "buildnstart": "npm run build && npm run start",
     "test": "echo 'no tests to run...'"
   },
