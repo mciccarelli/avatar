@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
+  distDir: 'dist',
   serverRuntimeConfig: {
     // Will only be available on the server side
     mySecret: 'secret'
