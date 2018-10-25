@@ -5,7 +5,6 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production next start -p 8081",
-    "buildnstart": "npm run build && npm run start",
     "test": "echo 'no tests to run...'"
   },
   "dependencies": {
