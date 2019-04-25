@@ -45,7 +45,7 @@ jobs:
   deploy:
     working_directory: ~/project
     docker:
-      - image: circleci/node:8.11.4-browsers
+      - image: circleci/node:9-jessie
     steps:
       - checkout
       # build folder that needs to be deployed
