@@ -1,15 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { mq } from '../../styles';
-
-const pullLogos = keyframes`
-  0% { left: 50%; transform: translate(-50%, -50%); }
-  100% { left: 0; transform: translate(0, -50%); }
-`;
-
-const centerLogos = keyframes`
-  0% { left: 0; transform: translate(0, -50%); }
-  100% { left: 50%; transform: translate(-50%, -50%); }
-`;
 
 export const Wrap = styled.div`
   display: flex;
@@ -45,34 +35,39 @@ export const Container = styled.div`
 `;
 
 export const Row = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  top: 50%;
-  left: ${props => (!props.centered ? '0' : '50%')};
-  transform: ${props =>
-    !props.centered ? 'translate(0, -50%)' : 'translate(-50%, -50%)'};
-  animation: 0.5s ${props => (!props.centered ? pullLogos : centerLogos)} normal;
-  padding-left: ${props => (!props.centered ? '8px' : '0')};
+  max-width: var(--maxWidth);
+  width: 100%;
+  overflow: hidden;
+  padding-left: 20px;
+
+  ${mq.large`
+    padding-left: 0;
+  `};
 `;
 
 export const Logo = styled.div`
-  max-width: 200px;
-  margin-bottom: 20px;
   z-index: 2;
+  float: left;
+  width: calc(50% - 20px);
+  margin-right: 20px;
+  margin-bottom: 20px;
 
-  ${mq.medium`
-    max-width: 310px;
-  `};
-
-  &:last-of-type {
-    margin-bottom: 0;
+  &:nth-child(2n) {
+    margin-right: 0;
   }
+
+  ${mq.large`
+    width: calc(33% - 20px);
+    &:nth-child(2n) {
+      margin-right: 20px;
+    }
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  `};
 
   & img {
     max-width: 100%;
-    margin-bottom: 20px;
     transition: all var(--transitionSpeed) ease-in-out;
     &.pulled {
       opacity: ${props => (!props.active ? '0.35' : '1')};
@@ -87,26 +82,32 @@ export const Modal = styled.div`
   transition-delay: ${props => (!props.show ? '0' : '0.5s')};
   opacity: ${props => (!props.show ? '0' : '1')};
   visibility: ${props => (!props.show ? 'hidden' : 'visible')};
-  position: absolute;
+  position: fixed;
   z-index: 3;
   width: 100%;
   height: 100%;
-  top: 0;
+  top: 80px;
   right: 0;
+  background: white;
 
   ${mq.medium`
-    top: 50%;
-    right: 20%;
-    transform: translateY(-50%);
-    max-width: 355px;
-    min-height: 280px;
+    top: 120px;
+  `};
+
+  ${mq.large`
+    position: absolute;
+    display: flex;
+    top: 238px;
+    right: 46px;
+    max-width: 637px;
+    min-height: 610px;
     height: auto;
   `};
 
   > div {
-    background: white;
     position: absolute;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
     top: 0;
     left: 0;
     padding: 1.5rem;

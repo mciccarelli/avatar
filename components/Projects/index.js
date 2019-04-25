@@ -65,35 +65,34 @@ export default class Projects extends React.Component {
               })}
           </Row>
           <Modal show={showModal !== false}>
-            {activeProject &&
-              !_.isEmpty(activeProject) && (
-                <div>
-                  <h2>{activeProject.fields.name}</h2>
-                  {activeProject.fields.url && (
-                    <p className="url">
-                      <a
-                        href={activeProject.fields.url}
-                        title={`Visit ${activeProject.fields.url}`}
-                        target="_blank"
-                      >
-                        {activeProject.fields.url.replace(/(^\w+:|^)\/\//, '')}
-                      </a>
-                    </p>
-                  )}
-                  {activeProject.fields.description && (
-                    <p className="description">
-                      {activeProject.fields.description}
-                    </p>
-                  )}
-                  {activeProject.fields.content && (
-                    <Markdown source={activeProject.fields.content} />
-                  )}
-                  <img
-                    src="/static/i-close.svg"
-                    onClick={() => this.setState({ showModal: false })}
-                  />
-                </div>
-              )}
+            {activeProject && !_.isEmpty(activeProject) && (
+              <div>
+                <h2>{activeProject.fields.name}</h2>
+                {activeProject.fields.url && (
+                  <p className="url">
+                    <a
+                      href={activeProject.fields.url}
+                      title={`Visit ${activeProject.fields.url}`}
+                      target="_blank"
+                    >
+                      {activeProject.fields.url.replace(/(^\w+:|^)\/\//, '')}
+                    </a>
+                  </p>
+                )}
+                {activeProject.fields.description && (
+                  <p className="description">
+                    {activeProject.fields.description}
+                  </p>
+                )}
+                {activeProject.fields.content && (
+                  <Markdown source={activeProject.fields.content} />
+                )}
+                <img
+                  src="/static/i-close.svg"
+                  onClick={() => this.setState({ showModal: false })}
+                />
+              </div>
+            )}
           </Modal>
         </Container>
       </Wrap>
