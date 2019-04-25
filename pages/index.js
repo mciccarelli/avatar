@@ -36,7 +36,8 @@ export default class HomePage extends Component {
     });
     const projects = await fetchEntriesForContentType({
       content_type: 'project',
-      limit: 5
+      order: 'fields.name',
+      limit: 18
     });
     const footer_entry = await fetchEntryById('6G4U286BvaieYuWc4S0i2W');
 
